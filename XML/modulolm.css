@@ -1,0 +1,72 @@
+nombremod {
+    background-color: #f0f0f0;
+    font-family: Arial;
+    font-size: 20px;
+	font-weight: bold;
+	color: #007bff;
+}
+
+nombre {
+    font-family: Arial;
+    font-size: 16px;
+	font-weight: bold;
+	color: darkgoldenrod;
+}
+
+horas {
+	font-size: 16px;
+	color: darkgrey;
+}
+
+caracter {
+	font-size: 20px;
+	color: darkkhaki;
+}
+
+inicio {
+	font-size: 26px;
+	color: darkviolet;
+}
+
+fin {
+	font-size: 26px;
+	color: darkviolet;
+}
+
+alumno {
+#    display: block;
+    border: 1px, #ddd;
+    padding: 5px;
+    margin-top: 30px;
+#    display: table-cell;
+}
+
+nif {
+	font-size: 18px;
+	font-style: italic;
+	color: limegreen;
+}
+
+telefono {
+	font-size: 16px;
+	color: red;
+}
+
+email {
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+	Margin-bottom: 15px;
+	padding: 15px;
+	border-radius: 8px;
+	background-color: yellow;
+}
+
+direccion {
+	font-size: 20px;
+	font-weight: bold;
+	color: deepskyblue;
+}
+
+nombre, nif, telefono, email, direccion {
+	display: table-row;
+}

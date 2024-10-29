@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/css' href='examen.css'?>
+
+<trabajadores>
+	<trabajador>
+		<nombre>Ana</nombre>
+		<apellido>García</apellido>
+		<edad>30</edad>
+		<departamento codigo="Ventas 001">Ventas</departamento>
+		<cargo>Ejecutivo de ventas</cargo>
+	</trabajador>
+	<trabajador>
+		<nombre>Luis</nombre>
+		<apellido>Rodríguez</apellido>
+		<edad>45</edad>
+		<departamento codigo="Finanzas 002">Finanzas</departamento>
+		<cargo>Analista financiero</cargo>
+	</trabajador>
+	<trabajador>
+		<nombre>María</nombre>
+		<apellido>López</apellido>
+		<edad>28</edad>
+		<departamento codigo="Marketing 003">Marketing</departamento>
+		<cargo>Especialista en redes sociales</cargo>
+	</trabajador>
+</trabajadores>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agenda>
+<persona>
+<nombre>Misael</nombre>
+<apellidos>Barrera Ojeda</apellidos>
+<direccion>C/Calle Nº1</direccion>
+<telefonos>
+<telefono tipo="movil">644 111 111</telefono>
+<telefono tipo="trabajo">956 111 111</telefono>
+</telefonos>
+</persona>
+<persona>
+<nombre>Guillermo</nombre>
+<apellidos>Roldán Cruz</apellidos>
+<direccion>C/Recta Nº2</direccion>
+<telefonos>
+<telefono tipo="movil">644 222 222</telefono>
+<telefono tipo="casa">956 222 222</telefono>
+</telefonos>
+</persona>
+</agenda>

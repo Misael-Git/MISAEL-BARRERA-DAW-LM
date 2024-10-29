@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<figuras>
+	<figura tipo="plana">
+		<nombre lados="4">cuadrado</nombre>
+	</figura>
+	<figura tipo="plana">
+		<nombre lados="3">triángulo</nombre>
+	</figura>
+	<figura tipo="tridimensional">
+		<nombre aristas="12" caras="6">cubo</nombre>
+	</figura>
+</figuras>
