@@ -4,19 +4,16 @@ body {
     color: azure;
 }
 
-table {
-    border-style: dotted;
-}
-
 td, tr, th {
     padding: 1%;
     width: 10em;
     background-color: rgb(66, 70, 87);
 }
- 
+
 table {
     text-align: center;
     margin: 10%;
+    border-collapse: collapse;
 }
 
 #entornos {
