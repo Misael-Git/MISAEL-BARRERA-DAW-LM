@@ -1,66 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicios Misael</title>
+    <title>Misael Barrera Ojeda - Lenguaje de Marcas</title>
     <style>
+        /* Estilo general */
         body {
-            margin-top: 5%;
-            margin-left: 3%;
-            margin-right: 3%;
-            background-color: #525252;
-            color: azure;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            height: 100vh;
         }
 
-        div {
-            border: 1px;
-            padding: 1%;
-            background: #313131;
-            transition-duration: 300ms;
-            margin-top: 1%;
+        h1, h2 {
+            text-align: center;
+            margin: 20px 0;
+            z-index: 2;
+            position: relative;
         }
 
-        div:hover {
-            padding: 1.2%;
-            transition-duration: 300ms;
+        h1 {
+            font-size: 2.5em;
+            color: #00ff00;
         }
 
-        a {
-            color: #9d9ccf;
+        h2 {
+            font-size: 1.5em;
         }
 
-        h3 {
-            margin-top: -.5%;
-            margin-bottom: -.5%;
+        /* Fondo estilo Matrix */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 0;
+            animation: matrix-animation 10s linear infinite;
+            mask-image: radial-gradient(circle, transparent, black 60%);
+        }
+
+        @keyframes matrix-animation {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                rgba(0, 255, 0, 0.2) 0 1px,
+                transparent 1px 20px
+            );
+            z-index: 0;
+            animation: glow 3s alternate infinite;
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        /* Panel lateral */
+        .sidebar {
+            width: 250px;
+            background-color: #222;
+            padding: 20px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .sidebar h3 {
+            color: #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .exercise-list {
+            margin-top: 10px;
+        }
+
+        .exercise-list li {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .exercise-list a {
+            color: #00ff00;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .exercise-list a:hover {
+            color: #ff00ff;
+        }
+
+        .exercise-list .share-btn {
+            color: #00ff00;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+
+        .exercise-list .share-btn:hover {
+            color: #ff00ff;
+        }
+
+        /* Contenedor principal */
+        .main-content {
+            margin-left: 270px;
+            width: 100%;
+            padding: 20px;
+            z-index: 1;
+            position: relative;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Pestañas */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: #222;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 0 5px;
+        }
+
+        .tab:hover {
+            background: #00ff00;
+            color: black;
+        }
+
+        .tab.active {
+            background: #00ff00;
+            color: black;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        iframe {
+            width: 90%;
+            height: 700px; /* Aumentado el alto del iframe */
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 20px 5%; /* Añadido margen izquierdo y derecho */
+            background: white;
+            z-index: 2;
         }
 
     </style>
 </head>
 <body>
-    <h1>MISAEL BARRERA OJEDA</h1>
-    <h2>Lenguaje de Marcas 1º DAW</h2>
-    <div>
-        <h3>TEMA 1: INTRODUCCIÓN A LOS LENGUAJES DE MARCAS</h3>
-        <ul>
-            <li><a href="TEMA 1 (XML)\estilo-animales\estilo-animales.xml">Ejercicio 1 (animales)</a></li>
-            <li><a href="TEMA 1 (XML)\estilo-articulos\articulos.xml">Ejercicio 2 (artículos)</a></li>
-            <li><a href="TEMA 1 (XML)\estilo-fechas\estilo-fechas.xml">Ejercicio 3 (fechas)</a></li>
-            <li><a href="TEMA 1 (XML)\examenXml\examen.xml">Examen</a></li>
-        </ul>
+    <div class="sidebar">
+        <h3>Ejercicios</h3>
+        <div class="exercise-list" id="tema1Exercises">
+            <h4>Ejercicios Tema 1</h4>
+            <ul>
+                <li><a href="TEMA 1 (XML)/estilo-animales/estilo-animales.xml" target="content-frame" onclick="updateTitle('Ejercicio 1 (animales)')">Ejercicio 1 (animales)</a><span class="share-btn" onclick="window.open('TEMA 1 (XML)/estilo-animales/estilo-animales.xml', '_blank')">🔗</span></li>
+                <li><a href="TEMA 1 (XML)/estilo-articulos/articulos.xml" target="content-frame" onclick="updateTitle('Ejercicio 2 (artículos)')">Ejercicio 2 (artículos)</a><span class="share-btn" onclick="window.open('TEMA 1 (XML)/estilo-articulos/articulos.xml', '_blank')">🔗</span></li>
+                <li><a href="TEMA 1 (XML)/estilo-fechas/estilo-fechas.xml" target="content-frame" onclick="updateTitle('Ejercicio 3 (fechas)')">Ejercicio 3 (fechas)</a><span class="share-btn" onclick="window.open('TEMA 1 (XML)/estilo-fechas/estilo-fechas.xml', '_blank')">🔗</span></li>
+                <li><a href="TEMA 1 (XML)/examenXml/examen.xml" target="content-frame" onclick="updateTitle('Examen')">Examen</a><span class="share-btn" onclick="window.open('TEMA 1 (XML)/examenXml/examen.xml', '_blank')">🔗</span></li>
+            </ul>
+        </div>
+
+        <div class="exercise-list" id="tema2Exercises">
+            <h4>Ejercicios Tema 2</h4>
+            <ul>
+                <li><a href="TEMA 2 (HTML)/ej1-listas.html" target="content-frame" onclick="updateTitle('Ejercicio 1 (listas)')">Ejercicio 1 (listas)</a><span class="share-btn" onclick="window.open('TEMA 2 (HTML)/ej1-listas.html', '_blank')">🔗</span></li>
+                <li><a href="TEMA 2 (HTML)/ej2-tablas.html" target="content-frame" onclick="updateTitle('Ejercicio 2 (tablas)')">Ejercicio 2 (tablas)</a><span class="share-btn" onclick="window.open('TEMA 2 (HTML)/ej2-tablas.html', '_blank')">🔗</span></li>
+                <li><a href="TEMA 2 (HTML)/ejemplo-imagen/ejemplo-imagen.html" target="content-frame" onclick="updateTitle('Ejemplo imagen')">Ejemplo imagen</a><span class="share-btn" onclick="window.open('TEMA 2 (HTML)/ejemplo-imagen/ejemplo-imagen.html', '_blank')">🔗</span></li>
+                <li><a href="TEMA 2 (HTML)/ej3-horario/ej3-horario.html" target="content-frame" onclick="updateTitle('Ejercicio 3 (horario)')">Ejercicio 3 (horario)</a><span class="share-btn" onclick="window.open('TEMA 2 (HTML)/ej3-horario/ej3-horario.html', '_blank')">🔗</span></li>
+                <li><a href="TEMA 2 (HTML)/ej4-frames.html" target="content-frame" onclick="updateTitle('Ejercicio 4 (frames)')">Ejercicio 4 (frames)</a><span class="share-btn" onclick="window.open('TEMA 2 (HTML)/ej4-frames.html', '_blank')">🔗</span></li>
+            </ul>
+        </div>
     </div>
 
-    <div>
-        <h3>TEMA 2: HTML</h3>
-        <ul>
-            <li><a href="TEMA 2 (HTML)\ej1-listas.html">Ejercicio 1 (listas)</a></li>
-            <li><a href="TEMA 2 (HTML)\ej2-tablas.html">Ejercicio 2 (tablas)</a></li>
-            <li><a href="TEMA 2 (HTML)\ejemplo-imagen\ejemplo-imagen.html">Ejemplo imagen</a></li>
-            <li><a href="TEMA 2 (HTML)\ej3-horario\ej3-horario.html">Ejercicio 3 (horario)</a></li>
-            <li><a href="TEMA 2 (HTML)\ej4-frames.html">Ejercicio 4 (frames)</a></li>
-            <li><a href="TEMA 2 (HTML)\ej5-forms.html">Ejercicio 5 (forms)</a></li>
-        </ul>
+    <div class="main-content">
+        <h1>Lenguaje de Marcas</h1>
+        <h2 id="fileTitle">Bucle infinito</h2>
+
+        <!-- Contenido -->
+        <div class="content active" id="tema1ExercisesContent">
+            <iframe name="content-frame" id="iframe" src="https://misael-git.github.io/MISAEL-BARRERA-DAW-LM/"></iframe>
+        </div>
     </div>
+
+    <script>
+        function updateTitle(title) {
+            document.getElementById('fileTitle').innerText = title;
+        }
+    </script>
 </body>
 </html>
