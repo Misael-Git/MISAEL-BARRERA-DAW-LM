@@ -13,7 +13,8 @@
             color: #fff;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 81vh;
+            overflow: hidden; /* Evitar el desplazamiento del body */
         }
 
         h1, h2 {
@@ -24,7 +25,7 @@
         }
 
         h1 {
-            margin-top: 2%;
+            margin-top: 1%;
             font-size: 2.5em;
             color: #00ff00;
         }
@@ -81,8 +82,16 @@
             top: 0;
             left: 0;
             color: #fff;
+            background-color: rgba(255, 255, 255, 0.05);
             z-index: 3;
             backdrop-filter: blur(10px);
+            transition-duration: 500ms;
+        }
+
+        aside:hover {
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition-duration: 500ms;
         }
 
         aside h3 {
@@ -175,7 +184,8 @@
         /* Contenedor principal */
         .main-content {
             margin-left: 15%;
-            width: 80%;
+            margin-bottom: 2%;
+            width: 83%;
             padding: 20px;
             z-index: 1;
             position: relative;
@@ -260,7 +270,7 @@
 
         <!-- Contenido -->
         <div class="content active" id="tema1ExercisesContent">
-            <iframe name="content-frame" id="iframe" src="https://cmd.to"></iframe>
+            <iframe name="content-frame" id="iframe" src="https://cmd.to" onload="scrollToTop()"></iframe>
         </div>
     </div>
 
@@ -268,7 +278,7 @@
         <h3>Sugerencias</h3>
         <div class="footer-content"> <!-- Contenedor para textarea y botón -->
             <textarea rows="1" placeholder="Escribe tus sugerencias aquí..."></textarea>
-            <a href="mailto:mbaroje1506@g.educaand.es">
+            <a id="mailtoLink" href="mailto:mbaroje1506@g.educaand.es?subject=Sugerencia&body=" target="_blank">
                 <button>Enviar Sugerencia</button>
             </a>
         </div>
@@ -279,9 +289,19 @@
             document.getElementById('fileTitle').innerText = title;
         }
         
-        document.addEventListener('DOMContentLoaded', function() {
-            window.scrollTo(0, 0);
-        });
+        document.getElementById('mailtoLink').onclick = function() {
+            const suggestion = document.getElementById('suggestionText').value.trim(); // Obtener el texto del textarea
+            const email = "mbaroje1506@g.educaand.es"; // Cambia esto por tu dirección de correo
+            const subject = "Sugerencia"; // Asunto del correo
+            const body = encodeURIComponent(suggestion); // Codificar el cuerpo del mensaje
+
+            // Crear el enlace mailto con el texto del textarea
+            this.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        };
+
+        function scrollToTop() {
+            window.scrollTo(0, 0); // Desplazarse a la parte superior de la página
+        }
     </script>
 </body>
 </html>
