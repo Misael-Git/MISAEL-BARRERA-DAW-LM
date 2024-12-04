@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum Vitae - Misael Barrera</title>
+    <style>
+        /* Fondo general */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #eaeaea;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Contenedor del CV */
+        .cv-container {
+            display: flex;
+            width: 50%;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        /* Banda izquierda */
+        aside {
+            width: 30%;
+            background: #1c1c1e;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        aside img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border: 4px solid #f5a623;
+        }
+        aside h1 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        aside h2 {
+            font-size: 1.2em;
+            margin: 20px 0 10px;
+            border-bottom: 2px solid #f5a623;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        aside p {
+            font-size: 0.9em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+        aside ul li {
+            margin: 10px 0;
+        }
+
+        /* Contenido principal */
+        main {
+            width: 70%;
+            padding: 30px;
+        }
+        main h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f5a623;
+            padding-bottom: 5px;
+        }
+        main section {
+            margin-bottom: 30px;
+        }
+        main p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        /* Portafolio */
+        .portfolio {
+            margin-bottom: 20px;
+        }
+        .portfolio iframe {
+            width: 100%;
+            height: 315px;
+            border: 0;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Mapa */
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #333;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Banda izquierda -->
+        <aside>
+            <div>
+                <img src="Misa-chiquito.png" alt="Foto de Misael Barrera">
+                <h1>Misael Barrera</h1>
+                <h2>Sobre mí</h2>
+                <p>Productor musical con experiencia en grabación, mezcla y masterización de audio para proyectos artísticos y comerciales.</p>
+                <h2>Contacto</h2>
+                <p>Teléfono: +52 722-22-86-27</p>
+                <p>Correo: mbaroje1506@gmail.com</p>
+                <p>Ubicación: Calle Sinfonía, CDMX</p>
+            </div>
+            <div>
+                <h2>Habilidades</h2>
+                <ul>
+                    <li>Ableton Live</li>
+                    <li>Pro Tools</li>
+                    <li>Masterización</li>
+                    <li>Composición</li>
+                </ul>
+            </div>
+            
+
+            <!-- Idiomas -->
+            <div>
+                <h2>Idiomas</h2>
+                <li>Español</li>
+                <li>Inglés</li>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main>
+            <!-- Formación -->
+            <section>
+                <h2>Formación</h2>
+                <p>Grado en Producción Musical - Conservatorio Nacional (2020)</p>
+                <p>Diplomado en Masterización de Audio (2021)</p>
+            </section>
+
+            <!-- Experiencia -->
+            <section>
+                <h2>Experiencia</h2>
+                <p><strong>Studio Beat (2023 - Actualidad):</strong> Ingeniero de sonido encargado de grabaciones y mezclas.</p>
+                <p><strong>MusicWave (2020 - 2022):</strong> Productor musical en proyectos comerciales y artísticos.</p>
+            </section>
+
+            <!-- Portafolio -->
+            <section class="portfolio">
+                <h2>Portafolio</h2>
+                <p>Aquí puedes ver un ejemplo de uno de mis proyectos destacados en producción musical:</p>
+                <iframe src="https://www.youtube.com/embed/QoYg-3H_85Q" title="Portafolio Musical"></iframe>
+            </section>
+
+            <!-- Mapa -->
+            <section class="map-container">
+                <h2>Ubicación</h2>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.831078684429!2d-77.02933168569413!3d-12.04318089144017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8bf3518d1eb%3A0x1f9156c71f5c71e5!2sPlaza%20de%20Armas!5e0!3m2!1ses!2spe!4v1696520239445!5m2!1ses!2spe" 
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
