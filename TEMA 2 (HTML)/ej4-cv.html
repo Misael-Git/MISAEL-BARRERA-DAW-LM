@@ -67,6 +67,46 @@
             margin: 10px 0;
         }
 
+        /* Contenedor del halo */
+        .halo {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+        
+        .halo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: spin 6s linear infinite;
+        }
+        
+        /* Imagen de perfil */
+        .halo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #f5a623;
+        }
+        
+        /* Animación del halo */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Contenido principal */
         main {
             width: 70%;
@@ -121,8 +161,10 @@
     <div class="cv-container">
         <!-- Banda izquierda -->
         <aside>
-            <div>
+            <div class="halo">
                 <img src="Misa-chiquito.png" alt="Foto de Misael Barrera">
+            </div>
+            <div>
                 <h1>Misael Barrera</h1>
                 <h2>Sobre mí</h2>
                 <p>Productor musical con experiencia en grabación, mezcla y masterización de audio para proyectos artísticos y comerciales.</p>
@@ -147,6 +189,7 @@
                 <h2>Idiomas</h2>
                 <li>Español</li>
                 <li>Inglés</li>
+                <li>Música (también es un idioma)</li>
             </div>
         </aside>
 
@@ -168,10 +211,10 @@
 
             <!-- Portafolio -->
             <section class="portfolio">
-                <h2>Portafolio</h2>
-                <p>Aquí puedes ver un ejemplo de uno de mis proyectos destacados en producción musical:</p>
+                <h2>Portfolio</h2>
+                <p>Varios de mis proyectos destacados en producción musical:</p>
                 <iframe src="https://www.youtube.com/embed/QoYg-3H_85Q" title="Portafolio Musical"></iframe>
-                <iframe src="https://www.youtube.com/embed/GWxGdNoAJL0" title="A"></iframe>
+                <iframe src="https://www.youtube.com/embed/GWxGdNoAJL0" title="Portafolio Musical"></iframe>
             </section>
 
             <!-- Mapa -->
