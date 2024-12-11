@@ -1,0 +1,175 @@
+body {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    line-height: 1.4;
+    display: block;
+    margin: 0;
+}
+
+#todo {
+    display: flex;
+}
+
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 2%;
+    margin-top: 0;
+}
+
+#logo {
+    width: 85%;
+    color: #CC6600;
+    margin-left: 2%;    
+}
+
+#buscador {
+    width: 15%;
+    margin-right: 2%;
+    margin-top: 1.8%;
+}
+
+#buscador label {
+    margin-right: 2%;
+}
+
+.fotoTexto {
+    display: flex;
+}
+
+.fotoFoto {
+    width: 20%;
+}
+
+.textoTexto {
+    width: 80%;
+}
+
+.mapa {
+    width: 100%;
+}
+
+.articulo {
+    color: #CC6600;
+    font-size: 1.6em;
+    line-height: 1.2;
+    margin-bottom: 0.3em;
+}
+
+#menu {
+    margin-right: 1em;
+    height: 5%;
+    width: 100%;
+    background-color: blueviolet;
+    list-style: none;
+    padding-top: .1%;
+    padding-bottom: .1%;
+
+}
+
+#menu li {
+    display: inline;
+    margin-right: 2em;
+}
+
+#cabecera {
+    width: 100%;
+    display: flex;
+}
+
+#menu a {
+    color: white;
+    font-size: 1.3em;
+}
+
+#lateral {
+    font-size: 0.9em;
+    width: 20%;
+    margin-left: 1%;
+}
+
+#lateral ul {
+    list-style: none;
+    margin-left: -15%;
+}
+
+#noticias, #publicidad {
+    margin: 5%;
+    padding: 5%;
+    border-style: solid;
+    border-color: #f79b40;
+}
+
+#secundario {
+    width: 50%;
+    margin: 1%;
+    padding: 1%;
+    border-style: solid;
+    border-color: #f79b40;
+}
+
+#secundario h2 {
+    background-color: #f79b40;
+    color: white;
+    padding: 1%;
+}
+
+.fecha {
+    width: 100%;
+    color: #999;
+}
+
+#noticias {
+    color: #003366;
+    background-color: rgb(235, 234, 234);
+}
+
+#publicidad {
+    color: #555;
+    background-color: #d6fdaa;
+}
+
+#publicidad a {
+    color: #CC6600;
+}
+
+.articulo a {
+    color: #CC6600;
+}
+
+.articulo p {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+#pie {
+    background-color: rgb(214, 214, 214);
+    width: 100%;
+    height: 3em;
+    display: flex;
+    padding-top: .5%;
+}
+
+.enlaces {
+    width: 90%;
+    margin-left: 1%;
+}
+
+.copyright {
+    width: 10%;
+}
+
+#secundario {
+    margin-left: 2%;
+}
+
+table {
+    border-style: double;
+    color: black;
+    width: 100%;
+}
+
+td {
+    width: fit-content;
+}
