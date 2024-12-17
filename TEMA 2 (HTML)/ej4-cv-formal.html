@@ -8,7 +8,7 @@
         /* Fondo general */
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             background: #f5f5f5;
             display: flex;
             justify-content: center;
@@ -18,81 +18,90 @@
         /* Contenedor general del CV */
         .cv-container {
             display: flex;
-            width: 800px; /* Más estrecho */
+            width: 700px; /* Más estrecho */
             background: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            border-radius: 10px;
             overflow: hidden;
         }
 
-        /* Banda izquierda */
-        aside {
-            width: 35%;
+        /* Sección izquierda */
+        .cv-left {
+            width: 30%;
             background: #1c1c1e;
             color: #fff;
             padding: 25px;
+            position: relative;
         }
 
-        aside img {
+        .cv-left::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px); /* Efecto Blur */
+            z-index: 0;
+        }
+
+        .cv-left > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-left img {
             display: block;
-            border-radius: 8px; /* Foto cuadrada */
-            width: 100%;
-            max-width: 150px;
+            border-radius: 10%;
+            width: 120px;
             margin: 0 auto 20px;
             border: 4px solid #f5a623;
         }
 
-        aside h1 {
-            font-size: 1.5em;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        aside h2 {
+        .cv-left h2 {
             font-size: 1.1em;
             margin: 20px 0 10px;
             border-bottom: 2px solid #f5a623;
             padding-bottom: 5px;
         }
 
-        aside p, aside ul {
+        .cv-left p, .cv-left ul {
             font-size: 0.9em;
             margin: 10px 0;
             line-height: 1.4;
         }
 
-        aside ul {
+        .cv-left ul {
             list-style: none;
             padding-left: 0;
         }
 
-        /* Contenido principal */
-        main {
-            width: 65%;
+        /* Sección derecha */
+        .cv-right {
+            width: 70%;
             padding: 25px;
             display: flex;
             flex-direction: column;
         }
 
-        main section {
+        .cv-section {
             margin-bottom: 20px;
         }
 
-        main h2 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
+        .cv-section h2 {
+            font-size: 1.2em;
             color: #333;
             border-bottom: 2px solid #f5a623;
             padding-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        main p {
-            font-size: 0.95em;
+        .cv-section p, .cv-section .skill-item {
+            font-size: 0.9em;
             margin: 5px 0;
-            line-height: 1.5;
         }
 
-        /* Nueva sección para habilidades blandas */
         .skills-container {
             display: flex;
             justify-content: space-between;
@@ -103,10 +112,13 @@
             width: 45%;
             margin-bottom: 10px;
             font-size: 0.9em;
+            background: #f5f5f5;
+            border-radius: 5px;
+            padding: 5px;
         }
 
         /* Footer */
-        footer {
+        .cv-footer {
             text-align: center;
             padding: 10px;
             background: #333;
@@ -117,52 +129,54 @@
 </head>
 <body>
     <div class="cv-container">
-        <!-- Sección izquierda -->
-        <aside>
-            <img src="foto-formal.png" alt="Foto de Misael Barrera">
-            <h1>Misael Barrera</h1>
-            <h2>Contacto</h2>
-            <p>Teléfono: +52 722-22-86-27</p>
-            <p>Correo: mbaroje1506@gmail.com</p>
-            <h2>Habilidades Técnicas</h2>
-            <ul>
-                <li>Ableton Live</li>
-                <li>Pro Tools</li>
-                <li>Masterización</li>
-                <li>Composición</li>
-            </ul>
-            <h2>Idiomas</h2>
-            <ul>
-                <li>Español (Nativo)</li>
-                <li>Inglés (Avanzado)</li>
-                <li>Música (también un idioma)</li>
-            </ul>
-        </aside>
+        <!-- Sección Izquierda -->
+        <div class="cv-left">
+            <div>
+                <img src="foto-formal.png" alt="Foto de Misael Barrera">
+                <h1>Misael Barrera</h1>
+                <h2>Contacto</h2>
+                <p>Teléfono: +52 722-22-86-27</p>
+                <p>Correo: mbaroje1506@gmail.com</p>
+                <h2>Habilidades Técnicas</h2>
+                <ul>
+                    <li>Ableton Live</li>
+                    <li>Pro Tools</li>
+                    <li>Masterización</li>
+                    <li>Composición</li>
+                </ul>
+                <h2>Idiomas</h2>
+                <ul>
+                    <li>Español (Nativo)</li>
+                    <li>Inglés (Avanzado)</li>
+                    <li>Música (también un idioma)</li>
+                </ul>
+            </div>
+        </div>
 
-        <!-- Sección principal -->
-        <main>
+        <!-- Sección Derecha -->
+        <div class="cv-right">
             <!-- Sobre mí -->
-            <section>
+            <div class="cv-section">
                 <h2>Sobre Mí</h2>
                 <p>Productor musical con amplia experiencia en grabación, mezcla y masterización de audio para proyectos artísticos y comerciales. Comprometido con la excelencia y la innovación en cada trabajo.</p>
-            </section>
+            </div>
 
             <!-- Formación -->
-            <section>
+            <div class="cv-section">
                 <h2>Formación</h2>
                 <p><strong>Grado en Producción Musical</strong> - Conservatorio Nacional (2020)</p>
                 <p><strong>Diplomado en Masterización</strong> - AudioTech Institute (2021)</p>
-            </section>
+            </div>
 
             <!-- Experiencia Profesional -->
-            <section>
+            <div class="cv-section">
                 <h2>Experiencia Profesional</h2>
                 <p><strong>Studio Beat (2023 - Actualidad):</strong> Ingeniero de sonido especializado en grabaciones y mezclas de alta calidad.</p>
                 <p><strong>MusicWave (2020 - 2022):</strong> Productor musical en proyectos de publicidad, cine y artistas independientes.</p>
-            </section>
+            </div>
 
             <!-- Habilidades Blandas -->
-            <section>
+            <div class="cv-section">
                 <h2>Habilidades Blandas</h2>
                 <div class="skills-container">
                     <div class="skill-item">Trabajo en equipo</div>
@@ -170,15 +184,15 @@
                     <div class="skill-item">Resolución de problemas</div>
                     <div class="skill-item">Gestión del tiempo</div>
                 </div>
-            </section>
+            </div>
 
             <!-- Referencias -->
-            <section>
+            <div class="cv-section">
                 <h2>Referencias</h2>
                 <p><strong>Juan Pérez</strong> - CEO Studio Beat<br>Tel: +52 123-456-7890</p>
                 <p><strong>María Gómez</strong> - Directora MusicWave<br>Tel: +52 987-654-3210</p>
-            </section>
-        </main>
+            </div>
+        </div>
     </div>
 </body>
 </html>
