@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum Vitae - Misael Barrera</title>
+    <style>
+        /* Fondo general */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Contenedor general del CV */
+        .cv-container {
+            display: flex;
+            width: 800px; /* Más estrecho */
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        /* Banda izquierda */
+        aside {
+            width: 35%;
+            background: #1c1c1e;
+            color: #fff;
+            padding: 25px;
+        }
+
+        aside img {
+            display: block;
+            border-radius: 8px; /* Foto cuadrada */
+            width: 100%;
+            max-width: 150px;
+            margin: 0 auto 20px;
+            border: 4px solid #f5a623;
+        }
+
+        aside h1 {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        aside h2 {
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+            border-bottom: 2px solid #f5a623;
+            padding-bottom: 5px;
+        }
+
+        aside p, aside ul {
+            font-size: 0.9em;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        aside ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* Contenido principal */
+        main {
+            width: 65%;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main section {
+            margin-bottom: 20px;
+        }
+
+        main h2 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 2px solid #f5a623;
+            padding-bottom: 5px;
+        }
+
+        main p {
+            font-size: 0.95em;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        /* Nueva sección para habilidades blandas */
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .skill-item {
+            width: 45%;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #ccc;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Sección izquierda -->
+        <aside>
+            <img src="foto-formal.png" alt="Foto de Misael Barrera">
+            <h1>Misael Barrera</h1>
+            <h2>Contacto</h2>
+            <p>Teléfono: +52 722-22-86-27</p>
+            <p>Correo: mbaroje1506@gmail.com</p>
+            <h2>Habilidades Técnicas</h2>
+            <ul>
+                <li>Ableton Live</li>
+                <li>Pro Tools</li>
+                <li>Masterización</li>
+                <li>Composición</li>
+            </ul>
+            <h2>Idiomas</h2>
+            <ul>
+                <li>Español (Nativo)</li>
+                <li>Inglés (Avanzado)</li>
+                <li>Música (también un idioma)</li>
+            </ul>
+        </aside>
+
+        <!-- Sección principal -->
+        <main>
+            <!-- Sobre mí -->
+            <section>
+                <h2>Sobre Mí</h2>
+                <p>Productor musical con amplia experiencia en grabación, mezcla y masterización de audio para proyectos artísticos y comerciales. Comprometido con la excelencia y la innovación en cada trabajo.</p>
+            </section>
+
+            <!-- Formación -->
+            <section>
+                <h2>Formación</h2>
+                <p><strong>Grado en Producción Musical</strong> - Conservatorio Nacional (2020)</p>
+                <p><strong>Diplomado en Masterización</strong> - AudioTech Institute (2021)</p>
+            </section>
+
+            <!-- Experiencia Profesional -->
+            <section>
+                <h2>Experiencia Profesional</h2>
+                <p><strong>Studio Beat (2023 - Actualidad):</strong> Ingeniero de sonido especializado en grabaciones y mezclas de alta calidad.</p>
+                <p><strong>MusicWave (2020 - 2022):</strong> Productor musical en proyectos de publicidad, cine y artistas independientes.</p>
+            </section>
+
+            <!-- Habilidades Blandas -->
+            <section>
+                <h2>Habilidades Blandas</h2>
+                <div class="skills-container">
+                    <div class="skill-item">Trabajo en equipo</div>
+                    <div class="skill-item">Creatividad</div>
+                    <div class="skill-item">Resolución de problemas</div>
+                    <div class="skill-item">Gestión del tiempo</div>
+                </div>
+            </section>
+
+            <!-- Referencias -->
+            <section>
+                <h2>Referencias</h2>
+                <p><strong>Juan Pérez</strong> - CEO Studio Beat<br>Tel: +52 123-456-7890</p>
+                <p><strong>María Gómez</strong> - Directora MusicWave<br>Tel: +52 987-654-3210</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
