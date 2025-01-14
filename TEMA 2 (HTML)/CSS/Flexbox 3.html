@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+        * {
+            /* Reset CSS */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+            height: 100vh;
+            background-color: #eeeeee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        
+            /*  Gap  */
+            gap: 10px;
+        
+            /* Specific Gap */
+            row-gap: 10px;
+            column-gap: 10px;
+
+            /* Or shorthand */
+            gap: 10px 10px; 
+        }
+
+        .item {
+            height: 100px;
+            width: 200px;
+            background: #fb6942;
+            border-radius: 1rem;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            flex: 1 1 auto;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+      </div>
+      
+</body>
+</html>

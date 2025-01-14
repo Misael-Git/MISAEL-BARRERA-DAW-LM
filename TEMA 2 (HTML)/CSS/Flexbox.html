@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+        * {
+            /* Reset CSS */
+            margin: 0;
+            padding: 0;
+            /* Este border-box hace que el tamaño máximo definido incluya el contenido, el padding y el borde, y no solo el contenido
+            
+            Ejemplo:
+                Sin border-box:
+                    Ancho total = 200px (contenido) + 40px (padding) + 20px (borde) = 260px.
+                    Alto total = 100px (contenido) + 40px (padding) + 20px (borde) = 160px.
+
+                Con border-box:
+                    Ancho total = 200px (incluyendo contenido, padding y borde).
+                    Alto total = 100px (incluyendo contenido, padding y borde).
+            
+            */
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+            height: 100vh;
+            background-color: #eeeeee;
+        
+          /* Centro el item */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+        /* Hacemos que salga uno arriba de otro, y no en línea */
+            flex-direction: column;
+        }
+
+        .item {
+            height: 100px;
+            width: 200px;
+            background: #fb6942;
+            border-radius: 1rem;
+            color: #fff;
+        
+          /* Centro el texto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+      </div>
+      
+</body>
+</html>
