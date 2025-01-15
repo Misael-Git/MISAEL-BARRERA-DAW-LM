@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+        * {
+            /* Reset CSS */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 20px;
+            height: 100vh;
+            background-color: #eeeeee;
+        
+            /* Building columns */
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 5px;
+        
+            /* Repeated sizes */
+            /* grid-template-columns: repeat(3, 1fr); */
+
+        }
+
+        .item {
+            background: #316d6d;
+            border-radius: 1rem;
+            color: #fff;
+            display: grid;
+            place-items: center;
+        }
+
+        .display {
+            grid-column: 1 / 5;
+            background: #887edd;
+        }
+
+        .plus {
+            grid-column: 4 / 5;
+            grid-row: 5 / 7;
+        }
+
+        .oper {
+            background: #547e92;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="item display" aria-colspan="4">Display</div>
+        <div class="item oper">OFF</div>
+        <div class="item oper">√</div>
+        <div class="item oper">%</div>
+        <div class="item oper">÷</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item oper">X</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item oper">-</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item plus oper">+</div>
+        <div class="item">0</div>
+        <div class="item">·</div>
+        <div class="item">=</div>
+      </div>
+      
+</body>
+</html>
