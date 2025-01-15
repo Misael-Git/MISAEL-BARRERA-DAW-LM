@@ -20,7 +20,7 @@
         .container {
             padding: 20px;
             height: 100vh;
-            background-color: #eeeeee;
+            background-color: #292929;
         
             /* Building columns */
             display: grid;
@@ -38,11 +38,21 @@
             color: #fff;
             display: grid;
             place-items: center;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            background: #509999;
         }
 
         .display {
             grid-column: 1 / 5;
             background: #887edd;
+        }
+
+        .display:hover {
+            background: #887edd;
+            cursor: auto;
         }
 
         .plus {
