@@ -1,4 +1,0 @@
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Lighter shadow */
-    color: var(--text-color);
-    color: var(--link-color);
-

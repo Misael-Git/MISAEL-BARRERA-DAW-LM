@@ -2,7 +2,7 @@
     --primary-color: #b8ffa1;
     --secondary-color: #f5f5f5;
     --text-color: #333;
-    --link-color: #8a8a8a;
+    --link-color: #5f5f5f;
     --cta-color: #4d4d4d;
     --spacing: 2rem;
 }
@@ -21,16 +21,18 @@ body {
 
 /* Header & Navigation */
 .navbar {
-    background: white;
+    background: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
     padding: 1rem var(--spacing);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease-in-out; /* Agregar transición suave para el cambio de posición */
 }
 
 .brand {
@@ -55,11 +57,13 @@ body {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease, border-bottom 0.5s ease; /* Transición de color y borde */
+    border-bottom: 2px solid transparent; /* Inicialmente el borde está transparente */
 }
 
 .nav-links a:hover {
     color: var(--link-color);
+    border-bottom: 2px solid var(--link-color); /* El borde se vuelve del color del enlace */
 }
 
 .nav-toggle {
@@ -125,6 +129,8 @@ body {
     background-color: transparent;
     border: 3px solid var(--primary-color);
     color: var(--cta-color);
+    width: 70%;
+    text-align: center;
 }
 
 /* Sections */
@@ -535,7 +541,8 @@ footer {
     color: var(--text-color);
     padding: 4rem var(--spacing);
     text-align: center;
-    margin: 4rem 0;
+    margin: 0;
+    margin-top: 4rem;
 }
 
 .newsletter-form {

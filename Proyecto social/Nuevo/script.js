@@ -19,6 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
         : 'none';
     });
   
+    let lastScrollTop = 0; // Guarda la última posición del scroll
+
+window.addEventListener("scroll", function() {
+    let navbar = document.querySelector(".navbar");
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Se hizo scroll hacia abajo: oculta la navbar
+        navbar.style.top = "-100px"; // Ajusta este valor según la altura de tu navbar
+    } else {
+        // Se hizo scroll hacia arriba: muestra la navbar
+        navbar.style.top = "0";
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Evita que la posición se vuelva negativa
+});
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
