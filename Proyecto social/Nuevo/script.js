@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigation toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-  
+ 
+
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       
@@ -20,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     let lastScrollTop = 0; // Guarda la última posición del scroll
+
+    // CTA
+    document.getElementById("scroll-btn").addEventListener("click", function() {
+      document.getElementById("newsletter-section").scrollIntoView({ behavior: "smooth" });
+    });
 
 window.addEventListener("scroll", function() {
     let navbar = document.querySelector(".navbar");
