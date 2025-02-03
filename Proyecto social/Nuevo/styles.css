@@ -103,7 +103,7 @@ img {
 /* Hero Section */
 #inicio {
     height: 100vh;
-    background-image: url('sources/foto portada.webp');
+    background-image: url('sources/fotoPortada.webp');
     background-attachment: fixed; /* Parallax effect */
     background-size: cover;
     display: flex;
