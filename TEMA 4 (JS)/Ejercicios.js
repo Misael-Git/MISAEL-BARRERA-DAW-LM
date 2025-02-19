@@ -15,7 +15,7 @@
     document.getElementById("ej1-resul").textContent = "La suma de los números del 1 al 100 es: " + suma;
 
 
-    /* EJERCICIO 2 */
+/* EJERCICIO 2 */
     let vector2 = [];
 
     function agregarNumero() {
@@ -42,4 +42,8 @@
         impares > 1 || impares === 0 ? palabraImpar = " números impares." : palabraImpar = " número impar."
 
         document.getElementById("ej2-resul").textContent = "Array: {" + vector2.join(", ") + "} Hay " + pares + palabraPar + impares + palabraImpar;
+    }
+
+    function reiniciarArray() {
+        vector2 = [];
     }

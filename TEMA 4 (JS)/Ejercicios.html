@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9; /* Fondo suave */
-            color: #333; /* Color de texto oscuro */
+            background-color: #1a1a1a; /* Fondo oscuro */
+            color: #fff; /* Texto blanco */
             line-height: 1.6; /* Espaciado entre líneas */
             margin: 0;
             padding: 0;
@@ -16,53 +16,102 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            background-image: url('matrix-bg.jpg'); /* Imagen de fondo Matrix */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-
         h1 {
             font-size: 2.5rem;
-            color: #4a4a4a;
+            color: #fff;
             text-align: center;
             margin-top: 20px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
-
         h2 {
             font-size: 1.8rem;
-            color: #5a67d8; /* Azul Instagram-like */
+            color: #fff;
             margin-bottom: 10px;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
         }
-
         .ejercicio {
             font-size: 1.2rem;
-            color: #38bdf8; /* Azul claro */
+            color: #fff;
             margin-bottom: 20px;
             padding: 10px 20px;
-            background-color: #ffffff; /* Fondo blanco */
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
             border-radius: 8px; /* Bordes redondeados */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+            margin: 20px 0;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #4351bf;
+        }
+        .input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(32, 31, 31, 0.5); /* Fondo semitransparente */
+            color: #bbbbbb;
+        }
+        .result {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+        }
+        .reiniciar {
+            background-color: red;
         }
     </style>
 </head>
-
 <body>
     <h1>Ejercicios JS</h1>
 
-    <h2>Ejercicio 1</h2>
-        <p id="ej1-resul" class="ejercicio"></p>
+    <!-- Ejercicio 1 -->
+    <div class="container">
+        <h2>Ejercicio 1</h2>
+        <p id="ej1-resul" class="result"></p>
+    </div>
 
+    <!-- Ejercicio 2 -->
+    <div class="container">
+        <h2>Ejercicio 2</h2>
+        <p>Introduce números en el campo de texto y pulsa "Agregar". Para terminar, introduce 0 o un valor no numérico.</p>
+        <input type="text" id="entrada" class="input" placeholder="Escribe un número">
+        <button class="btn" onclick="agregarNumero()">Agregar</button>
 
-    <h2>Ejercicio 2</h2>
-        <div class="ejercicio">
-            <p>Introduce números en el campo de texto y pulsa "Agregar". Para terminar, introduce 0 o un valor no numérico.</p>
+        <!-- Tenía ganas de poner más botones JAJA -->
+        <button class="btn" onclick="mostrarResultado()">Resultado</button>
+        <button class="btn reiniciar" onclick="reiniciarArray()">↻</button>
+        <p id="ej2-resul" class="result"></p>
+    </div>
 
-            <input type="text" id="entrada" placeholder="Escribe un número">
-            <button onclick="agregarNumero()">Agregar</button>
-    
-            <p id="ej2-resul"></p>
-        </div>
-
-
-        
-
+    <!-- Archivo JavaScript -->
     <script src="Ejercicios.js"></script>
 </body>
 </html>
