@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a; /* Fondo oscuro */
+            color: #fff; /* Texto blanco */
+            line-height: 1.6; /* Espaciado entre líneas */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('matrix-bg.jpg'); /* Imagen de fondo Matrix */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+        .ejercicio {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+            margin: 20px 0;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #4351bf;
+        }
+        .input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(32, 31, 31, 0.5); /* Fondo semitransparente */
+            color: #bbbbbb;
+        }
+        .result {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+        }
+        .reiniciar {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculos</h1>
+
+    <!-- sumatorio, multiplicación, impares, máximo y mínimo -->
+    <div class="container">
+        <h2>Introduce los datos</h2>
+        <p>Introduce números en el campo de texto y pulsa "Agregar".</p>
+        <input type="text" id="entrada" class="input" placeholder="Escribe un número">
+        <button class="btn" onclick="calculos.agregarNumero()">Agregar</button>
+        <button class="btn reiniciar" onclick="calculos.reiniciarArray()">↻</button>
+        
+        <!-- System Out -->
+        <p id="syso" class="result"></p>    
+
+    <!-- Suma -->
+        <button class="btn" onclick="calculos.calcularSuma()">Calcular suma</button>
+        <p id="ej2-resul" class="result"></p>
+
+    <!-- Multiplicación -->
+        <button class="btn" onclick="calculos.calcularMultiplicacion()">Calcular multiplicación</button>
+        <p id="ej3-resul" class="result"></p>
+
+    <!-- Impares -->
+        <button class="btn" onclick="calculos.calcularImpares()">Calcular impares</button>
+        <p id="ej4-resul" class="result"></p>
+
+    <!-- Máximo -->
+        <button class="btn" onclick="calculos.calcularMax()">Calcular máximo</button>
+        <p id="ej5-resul" class="result"></p>
+
+    <!-- Mínimo -->
+        <button class="btn" onclick="calculos.calcularMin()">Calcular mínimo</button>
+        <p id="ej6-resul" class="result"></p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let calculos = {
+    vector: [],
+    agregarNumero: function () {
+        let entrada = document.getElementById("entrada").value;
+        if (!isNaN(entrada) && entrada !== "") {
+            let numero = Number(entrada);
+            if (numero !== 0) {
+                this.vector.push(numero);
+                document.getElementById("entrada").value = "";
+                document.getElementById("syso").textContent = "Número " + numero + " añadido correctamente. Array: " + this.vector.join(", ");
+            } else {
+                this.calcularResultados();
+            }
+        } else {
+            this.calcularResultados();
+        }
+    },
+    reiniciarArray: function () {
+        this.vector = [];
+        document.getElementById("syso").textContent = "Se ha reiniciado el array satisfactoriamente";
+    },
+    calcularSuma: function () {
+        let suma = this.vector.reduce((a, b) => a + b, 0);
+        document.getElementById("ej2-resul").textContent = "Sumatorio: " + suma;
+    },
+    calcularMultiplicacion: function () {
+        let multiplicacion = this.vector.reduce((a, b) => a * b, 1);
+        document.getElementById("ej3-resul").textContent = "Multiplicación: " + multiplicacion;
+    },
+    calcularImpares: function () {
+        let impares = [];
+        for (let i = 0; i < this.vector.length; i++) {
+            if (this.vector[i] % 2 !== 0) {
+                impares.push(this.vector[i]);
+            }
+        }
+        document.getElementById("ej4-resul").textContent = "Hay " + impares.length + " números impares: " + impares.join(", ");
+    },
+    calcularMax: function () {
+        let max = Math.max(...this.vector);
+        document.getElementById("ej5-resul").textContent = "Máximo: " + max;
+    },
+    calcularMin: function () {
+        let min = Math.min(...this.vector);
+        document.getElementById("ej6-resul").textContent = "Mínimo: " + min;
+    },
+    calcularResultados: function () {
+        this.calcularSuma();
+        this.calcularMultiplicacion();
+        this.calcularImpares();
+        this.calcularMax();
+        this.calcularMin();
+    }
+}
+
+        
+    </script>
+</body>
+</html>
