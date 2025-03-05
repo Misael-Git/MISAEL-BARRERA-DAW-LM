@@ -1,0 +1,4 @@
+A fascinating inmersive webpage with beautifull and modern design, with a lot of fx over all the page. It has 4 parts, (with its own wide header (that isnt static)): Home, My Projects, My Music About me. Im a creator: I produce music, I create a lot of it just with my mouth, I also have a lot of thing of ammusement parks (in fact, thats the most important part of the web) like a game that is on steam called: The Kraken, and in start its a ride concept that i created. Do it so visual as it has a png of the atraction in 1 half of the web, and text in the other, or cool design things like this. I want you to design the complete web in the 4 tabs. It has to have a lot of blurr fx, and it has to be in darkmode.
+
+
+the background music for an amussement park attraction caller The Kraken. Its ambiented in the Kraken, with sea sounds. It has not lyrics

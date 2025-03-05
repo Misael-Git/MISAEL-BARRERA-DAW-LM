@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Web Creativa</title>
+  <style>
+    :root {
+      --primary: #2a2a2a;
+      --secondary: #1a1a1a;
+      --accent: #00ff88;
+      --text: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--primary);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      position: fixed;
+      width: 100%;
+      padding: 20px;
+      background: rgba(42, 42, 42, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00ff88, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Home Section */
+    .home {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+      z-index: 1;
+    }
+
+    .home-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .home h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #00ff88, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Projects Section */
+    .projects {
+      padding: 100px 20px;
+      background: var(--secondary);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Music Section */
+    .music {
+      padding: 100px 20px;
+      background: var(--primary);
+      position: relative;
+    }
+
+    .music::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+      z-index: -1;
+    }
+
+    /* About Section */
+    .about {
+      padding: 100px 20px;
+      background: var(--secondary);
+    }
+
+    .split-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .split-content img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Tu Web</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#music">Música</a></li>
+      <li><a href="#about">Sobre Mí</a></li>
+    </ul>
+  </nav>
+
+  <section class="home" id="home">
+    <div class="home-content">
+      <h1>Bienvenido a mi Mundo Creativo</h1>
+      <p>Explora mis proyectos, música y pasión por los parques de diversiones</p>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Mis Proyectos</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="kraken-game.png" alt="Kraken Game">
+        <h3>The Kraken</h3>
+        <p>Un juego épico lleno de acción y emoción</p>
+      </div>
+      <!-- Add more project cards -->
+    </div>
+  </section>
+
+  <section class="music" id="music">
+    <h2>Música</h2>
+    <div class="project-grid">
+      <!-- Add music project cards -->
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>Sobre Mí</h2>
+    <div class="split-content">
+      <img src="kraken-attraction.png" alt="Kraken Atracción">
+      <div>
+        <h3>La Atracción del Kraken</h3>
+        <p>Descubre cómo creé esta experiencia única</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Add smooth scroll and other interactive effects
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

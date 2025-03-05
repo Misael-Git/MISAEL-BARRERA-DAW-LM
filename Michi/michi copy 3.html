@@ -1,0 +1,140 @@
+<html>
+<head>
+    <title>Interactive Beach</title>
+    <style>
+            body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle at center, #87CEEB, #4682B4);
+        overflow: hidden;
+    }
+
+    .beach-scene {
+        position: relative;
+        height: 100%;
+    }
+
+    .wave {
+        position: absolute;
+        bottom: 100px;
+        width: 100%;
+        animation: waveMove 3s infinite linear;
+    }
+
+    @keyframes waveMove {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .palm-tree {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: auto;
+    }
+
+    .sand {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background: #F4A460;
+    }
+
+    .starfish {
+        position: absolute;
+        animation: appear 0.5s ease-out;
+    }
+
+    @keyframes appear {
+        0% { transform: scale(0); }
+        80% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+    </style>
+
+</head>
+<body>
+    <div class="beach-scene">
+        <svg class="wave" viewBox="0 0 500 150">
+            <path fill="rgba(98, 169, 219, 0.8)" d="M0 80 Q 125 30 250 80 T 500 80 L 500 150 L 0 150 Z"/>
+        </svg>
+        
+        <svg class="palm-tree" viewBox="0 0 100 100">
+            <rect x="45" y="40" width="10" height="60" fill="#8B4513"/>
+            <path d="M30 40 Q 50 0 70 40 L 50 30 L 30 40" fill="#228B22"/>
+            <path d="M60 35 Q 70 10 80 35 L 70 25 L 60 35" fill="#228B22"/>
+        </svg>
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    const beach = document.querySelector('.beach-scene');
+    const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF'];
+
+    function showSection(id) {
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(id)?.classList.add('active');
+    }
+
+    function handleNavLinkClick(event) {
+        event.preventDefault();
+        const sectionId = this.dataset.section;
+        showSection(sectionId);
+
+        // Update the URL hash
+        history.pushState(null, null, `#${sectionId}`);
+
+        // Make the nav link active
+        navLinks.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', handleNavLinkClick);
+    });
+
+    beach.addEventListener('click', (e) => {
+        const starfish = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        starfish.setAttribute('class', 'starfish');
+        starfish.setAttribute('viewBox', '0 0 24 24');
+        starfish.setAttribute('width', '40');
+        starfish.setAttribute('height', '40');
+        starfish.style.left = `${e.clientX - 20}px`;
+        starfish.style.top = `${e.clientY - 20}px`;
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute('d', 'M12 0 L15 9 L24 9 L16 14 L19 22 L12 17 L5 22 L8 14 L0 9 L9 9 Z');
+        path.setAttribute('fill', colors[Math.floor(Math.random() * colors.length)]);
+        starfish.appendChild(path);
+        
+        beach.appendChild(starfish);
+        
+        setTimeout(() => {
+            beach.removeChild(starfish);
+        }, 5000);
+    });
+
+    // Initially show the home section
+    if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1);
+        showSection(sectionId);
+    } else {
+        showSection('home');
+        navLinks[0].classList.add('active'); //activate home link
+    }
+});
+    </script>
+</body>
+</html>
