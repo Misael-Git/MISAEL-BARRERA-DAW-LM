@@ -1,0 +1,1922 @@
+tengo este código:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        /* Dark mode base */
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #6c63ff;
+            --text: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .orbit-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(2px) brightness(0.8);
+        }
+
+        .block {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            transition: border-radius 1s ease, transform 1s ease;
+            box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            z-index: 1000;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .content {
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .split-section {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            padding: 4rem 10%;
+            gap: 2rem;
+        }
+
+        .text-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image-panel img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .reverse {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+
+        .reverse .text-panel,
+        .reverse .image-panel {
+            direction: ltr;
+        }
+
+        button {
+            background: var(--accent);
+            border: none;
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .split-section {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+            
+            .reverse {
+                direction: ltr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="orbit-container"></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">My Projects</a>
+        <a href="#music">My Music</a>
+        <a href="#about">About Me</a>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="content">
+            <h1>Welcome to My World</h1>
+            <p>A creator of music and amusement park concepts</p>
+        </div>
+    </section>
+
+    <section id="projects" class="split-section">
+        <div class="text-panel">
+            <h2>The Kraken</h2>
+            <p>A thrilling ride concept turned into a game on Steam. Dive into the depths of imagination!</p>
+            <a href="https://store.steampowered.com" class="steam-btn">View on Steam</a>
+        </div>
+        <div class="image-panel">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Example_image.svg" alt="The Kraken ride concept">
+        </div>
+    </section>
+
+    <section id="music" class="split-section reverse">
+        <div class="text-panel">
+            <h2>Voice Soundscapes</h2>
+            <p>Experience my unique soundscapes created with just my voice and imagination</p>
+            <a href="#" class="music-btn">Listen Now</a>
+        </div>
+        <div class="image-panel">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Music creation">
+        </div>
+    </section>
+
+    <section id="about" class="split-section">
+        <div class="text-panel">
+            <h2>About Me</h2>
+            <p>I am a creator who thrives on innovation. From producing music with my voice to designing exhilarating amusement park rides, I bring ideas to life through passion and creativity.</p>
+        </div>
+        <div class="image-panel">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" alt="Creator portrait">
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrollPosition = window.pageYOffset;
+            hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        });
+
+        // Orbit animation
+        $(document).ready(function() {
+            const container = $('.orbit-container');
+            
+            // Create orbiting blocks
+            for(let i = 0; i < 10; i++) {
+                const block = $('<div>').addClass('block');
+                container.append(block);
+            }
+
+            // Create particles
+            for(let i = 0; i < 200; i++) {
+                const particle = $('<div>').addClass('particle')
+                    .css({
+                        left: Math.random() * 100 + 'vw',
+                        top: Math.random() * 100 + 'vh',
+                        animationDuration: Math.random() * 3 + 1 + 's'
+                    });
+                container.append(particle);
+            }
+
+            function animate() {
+                $('.block').each(function() {
+                    const angle = Date.now() * 0.0005;
+                    const x = Math.cos(angle * (Math.random() * 0.5 + 0.5)) * 50;
+                    const y = Math.sin(angle * (Math.random() * 0.5 + 0.5)) * 50;
+                    $(this).css({
+                        transform: `translate(${x}vw, ${y}vh) rotate(${angle}rad)`,
+                        background: `hsl(${Math.random() * 360}, 50%, 50%)`
+                    });
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>
+
+quiero corregir lo del fondo para que sea así: <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Órbita Abstracta con Efectos</title>
+    <style>
+        /* Estilos básicos */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Fondo negro para efecto espacial */
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            filter: blur(1px); /* Desenfoque sutil en todo el contenedor */
+        }
+
+        .block {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            transition: border-radius 1s ease, transform 1s ease;
+            box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff;
+            filter: blur(0.5px); /* Desenfoque ligero en los bloques */
+        }
+
+        .block.spin {
+            animation: spin 18s linear infinite; /* Giro más lento y suave */
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Partículas de fondo */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 10 bloques para un efecto más limpio y menos cargado -->
+        <div class="block" id="block1"></div>
+        <div class="block" id="block2"></div>
+        <div class="block" id="block3"></div>
+        <div class="block" id="block4"></div>
+        <div class="block" id="block5"></div>
+        <div class="block" id="block6"></div>
+        <div class="block" id="block7"></div>
+        <div class="block" id="block8"></div>
+        <div class="block" id="block9"></div>
+        <div class="block" id="block10"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var centerX = window.innerWidth / 10;
+            var centerY = window.innerHeight / 2;
+            var angles = [];
+            var radii = [];
+            var speeds = [];
+            var shapeStates = [];
+
+            // Inicializar parámetros para cada bloque
+            $(".block").each(function(index) {
+                angles[index] = Math.random() * 360;
+                radii[index] = Math.random() * 400 + 100; // Órbita entre 100 y 500px
+                speeds[index] = Math.random() * 0.8 + 0.4; // Más lenta: 0.4 a 1.2 grados por frame
+                shapeStates[index] = 0;
+                $(this).addClass('spin');
+            });
+
+            // Crear 200 partículas de fondo para un efecto más rico
+            for (var i = 0; i < 200; i++) {
+                var particle = $('<div class="particle"></div>');
+                particle.css({
+                    left: Math.random() * window.innerWidth + 'px',
+                    top: Math.random() * window.innerHeight + 'px',
+                    animationDuration: (Math.random() * 3 + 1) + 's' // Duraciones variadas
+                });
+                $('.container').append(particle);
+            }
+
+            function updateBlocks() {
+                $(".block").each(function(index) {
+                    angles[index] += speeds[index];
+                    if (angles[index] >= 360) angles[index] -= 360;
+
+                    var rad = angles[index] * (Math.PI / 180);
+                    var newLeft = centerX + radii[index] * Math.cos(rad) - $(this).width() / 2;
+                    var newTop = centerY + radii[index] * Math.sin(rad) - $(this).height() / 2;
+
+                    // Cambio de forma más frecuente y suave
+                    if (Math.random() < 0.02) {
+                        shapeStates[index] = 1 - shapeStates[index];
+                        var newRadius = shapeStates[index] ? '50%' : '10px';
+                        $(this).css('border-radius', newRadius);
+                    }
+
+                    // Efecto de zoom aleatorio
+                    if (Math.random() < 0.01) {
+                        var scale = Math.random() * 1.5 + 1.75; // Escala entre 0.75 y 1.25
+                        $(this).css('transform', `scale(${scale}) rotate(${angles[index]}deg)`);
+                    }
+
+                    $(this).css({
+                        left: newLeft + 'px',
+                        top: newTop + 'px'
+                    });
+                });
+            }
+
+            // Detección de colisiones con rebote
+            function checkCollisions() {
+                var blocks = $(".block");
+                for (var i = 0; i < blocks.length; i++) {
+                    for (var j = i + 1; j < blocks.length; j++) {
+                        var b1 = $(blocks[i]);
+                        var b2 = $(blocks[j]);
+                        var b1Pos = b1.position();
+                        var b2Pos = b2.position();
+                        var dx = b1Pos.left - b2Pos.left;
+                        var dy = b1Pos.top - b2Pos.top;
+                        var distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 60) { // Tamaño de los bloques
+                            var tempSpeed = speeds[i];
+                            speeds[i] = speeds[j];
+                            speeds[j] = tempSpeed;
+                        }
+                    }
+                }
+            }
+
+            // Actualizar cada 16ms (~60fps)
+            setInterval(function() {
+                updateBlocks();
+                checkCollisions();
+            }, 16);
+
+            // Iniciar automáticamente
+            $(".block").show();
+        });
+    </script>
+</body>
+</html>
+
+también añade los bloques de esta web:
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brújula Social</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <link rel="icon" href="sources\logo.jpg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!--
+Información de la web:
+
+  Web creada por Misael Barrera Ojeda.
+
+  Textos:
+    La información que se muestra en la web es al 90% la misma que en la de referencia.
+    Algunos textos, sobre todo al inicio de la página, han sido eliminados.
+    Se ha cambiado el texto del final de una pregunta:
+        En vez de decir: "Consultar precios".
+        Dice: "Consulta los precios sin compromiso".
+
+  Llamadas a la acción:
+    Se han añadido más call to action (CTA, llamadas a la acción).
+    Se ha añadido la sección contacta con nosotras, a la que llevan los diferentes CTA.
+    En dicha sección hay un enlace al mail (que falta por completar), y otro al teléfono.
+
+  Otros bloques:
+    Se han añadido dos bloques nuevos con textos de ejemplo (revisar y actualizar, o eliminar):
+        - Nuestro Impacto
+        - Nuestra Trayectoria
+
+  Si es el caso, gracias por elegir mi web 😉
+-->
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        
+        <img src="sources\logo.jpg" width="50" height="50" alt="">
+
+        <h1>Brújula Social</h1>
+      </div>
+      <button class="nav-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#faq">Preguntas Frecuentes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <h1>BRÚJULA GABINETE SOCIOEDUCATIVO Y PSISCOLÓGICO</h1>
+        <div class="services-carousel">
+          <div class="service-item"><h2>PSICOLOGÍA</h2></div>
+          <div class="service-item"><h2>AUDICIÓN Y LENGUAJE</h2></div>
+          <div class="service-item"><h2>ESTIMULACIÓN TEMPRANA Y COGNITIVA</h2></div>
+          <div class="service-item"><h2>HABILIDADES SOCIALES Y AUTONOMÍA</h2></div>
+          <div class="service-item"><h2>GESTIÓN BECAS NEAE</h2></div>
+        </div>
+        <a href="#newsletter-section" id="scroll-btn" class="cta-button">Únete al Cambio</a>
+      </div>
+    </section>
+
+<br>
+
+    <section id="inicio-texto" class="inicio-texto">
+        <div class="text-content">
+          <h3>¿Qué Ofrecemos?</h3>
+          <p>Atención personalizada, adaptada a las necesidades psicológicas, sociales y emocionales tanto de adult@s como de menores.</p>
+        </div>
+        <br><br>
+      <div class="text-content">
+        <h3>¿Qué Hago Cuando?</h3>
+        <p>...¿Han diagnosticado a su hijo/a de TEA?¿Hiperactividad?¿TDAH?¿Desfase madurativo?¿Trastorno específico del lenguaje TEL? ¿TGD? ¿Falta de atención?¿Dislexia ?¿Necesita apoyo psicológico para superar una situación de crisis emocional?¿Tienes pensamientos negativos? ¿Tiene miedos, ansiedad, frustración, baja autoestima?¿Acoso escolar?¿No consigue poner límites en casa? ¿Tienes problemas para organizar el estudio?...</p>
+      </div>
+      <br>
+      <a href="#newsletter-section" id="scroll-btn" class="cta-button secondary">Contacta con nosotras</a>
+  </section>
+
+  <section class="expanded-faq">
+
+  <div class="text-image-container">
+
+    <div class="text-image-container1">
+      <div class="image-content">
+        <img src="sources\Andrea.jpeg" width="80%">
+      </div>
+      <div class="text-content">
+        <h3>Audición y Lenguaje</h3>
+        <p>Dislexia, dislalia, trastorno específico del lenguaje, tartamudez, déficit de atención, memoria, trastorno general del desarrollo, hiperactividad.</p>
+      </div>
+    </div>
+
+    <div class="text-image-container2">
+      <div class="image-content">
+        <img src="sources\Olga.jpg" width="80%">
+      </div>
+      <div class="text-content">
+        <h3>Psicología</h3>
+        <p>Menores, adolescentes, adultos y familias. T. Del comportamiento, estado anímico, ansiedad, bullying, terapias individuales y grupales. Psicóloga sanitaria y forense. Informes.</p>
+      </div>
+    </div>
+
+  </div>
+
+<br><br><br>
+
+  <div class="text-image-container">
+
+    <div class="image-content">
+      <img src="sources\manosUnidas.png" class="fotoDiferente">
+      <br><br>
+      <h3>Habilidades Sociales y Autonomía</h3>
+      <p>Trabajo en grupo para: adquirir habilidades para la vida, relaciones sociales, familiares, autocontrol, espera, resolución de problemas de la vida cotidiana y mucho más.</p>
+    </div>
+
+    <div class="image-content">
+      <img src="sources\cuadritosMadera.jpg" class="fotoDiferente">
+      <br><br> 
+      <h3>Atención Temprana y Estimulación Cognitiva</h3>
+        <p>Atención preventiva y asistencial para favorecer el desarrollo, autonomía y bienestar.</p>
+        <p>Trabajamos patologías como Parkinson, Alzheimer, demencias.</p>
+    </div>
+  </div>
+
+<br>
+
+  </div>
+    <a href="#newsletter-section" id="scroll-btn" class="cta-button secondary">Contacta con nosotras</a>
+  </div>
+</section>
+
+
+  <section class="team">
+    <h2>Actividades Destacadas</h2>
+    <div class="activity-grid-alt">
+
+      <div class="activity-block-alt">
+        <div class="activity-image-alt">
+          <img src="sources\SalaSensorialBurbujas.jpeg" width="100%">
+        </div>
+        <div class="activity-content-alt">
+          <h3>Aula sensorial BURBUJAS</h3>
+          <p>Ya disponemos de sala sensorial en Brújula.</p>
+          <br>
+          <div class="faq-question">
+            <div class="faq-question-header">
+              <h3>¿Por qué la necesitamos?</h3>
+            </div>
+            <div class="faq-question-content">
+              <p>La atención temprana es el conjunto de acciones, dirigidas a la población infantil de 0 a 6 años, a la familia y al entorno.</p> 
+              <br><p>Tiene por objetivo dar respuesta lo más pronto posible a las necesidades transitorias o permanentes que presentan los niños o niñas con trastornos en su desarrollo o que tienen el riesgo de padecerlos. Estas intervenciones, que deben considerar la globalidad del niño o la niña y estar planificadas por un equipo de profesionales.</p>
+              <br><p>El objetivo es que reciban toda la atención preventiva y asistencial que puedan favorecer su capacidad de desarrollo y de bienestar, haciendo posible su integración en los ámbitos, familiares, escolares y sociales, para favorecer su autonomía personal.</p>
+              <br><p>La estimulación multisensorial es una herramienta o un instrumento utilizado para mejorar y optimizar, la calidad de vida de las personas que presentan algún tipo de discapacidad, como la auditiva, la visual, intelectual, etc.  Emplea estrategias y actividades para desarrollar la percepción, las sensaciones y la integración sensorial.</p>
+            </div>
+          </div>
+          <div class="faq-question">
+            <div class="faq-question-header">
+              <h3>¿Qué materiales usamos y por qué?</h3>
+            </div>
+            <div class="faq-question-content">
+              <p>El área está acondicionada con luces, sonidos, colores y olores cuya actividad principal es la de estimular todos los sentidos de manera global y holística, es decir, una intervención global destinada a proporcionar estímulos sensoriales que les proporciona bienestar a partir de la estimulación o relajación. Es de vital importancia conocer como procesamos la información sensorial que nos llega del exterior y nos conecta con los sentidos, los cuales nos proporcionan la información vital que nos permite relacionarnos con el mundo que nos rodea de manera segura e independiente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-block-alt">
+        <div class="activity-image-alt">
+          <img src="sources\Toruños.jpeg" width="100%">
+        </div>
+        <div class="activity-content-alt">
+          <h3>I Encuentro por el día mundial  del autismo</h3>
+          <p>Jornada muy amena y con muchísima participación de colectivos unidos por la causa: unidad canina de la policía nacional, I Concurso de cuentos infantiles, superhéroes y muchos talleres.</p>
+          <br><p>Brújula participó realizando un taller de bolsas sensoriales.</p>
+        </div>
+      </div>
+
+      <div class="activity-block-alt">
+        <div class="activity-image-alt">
+          <img src="sources\cursos con padres.jpg" width="100%">
+        </div>
+        <div class="activity-content-alt">
+          <h3>Talleres para familias</h3>
+          <p>1. Herramientas para una adolescencia en positivo</p>
+          <p>2. Programa de acompañamiento para familias con hijos/as dentro del trastorno del espectro autista, TEA.</p>
+        </div>
+      </div>
+
+      <div class="activity-block-alt">
+        <div class="activity-image-alt">
+          <img src="sources\ciberviolencia.jpg" width="100%">
+        </div>
+        <div class="activity-content-alt">
+          <h3>Ponencia "En la era digital luchemos por la igualdad"</h3>
+          <p>Encuentro Zonal del Plan de Igualdad. Presentación del trabajo que realizamos para la sensibilización y prevención con adolescentes en materia de violencia a través de redes sociales, comunidades,...</p>
+        </div>
+      </div>
+
+      <div class="activity-block-alt">
+        <div class="activity-image-alt">
+          <img src="sources\sensibilizacion.png" width="100%">
+        </div>
+        <div class="activity-content-alt">
+          <h3>Talleres de sensibilización. Ciberviolencia de género a través de las redes sociales</h3>
+          <p>Con Pepi Moreno, coordinadora provincial del Instituto Andaluz de la Mujer, IES Los Remedios y Brújula Gabinete. Talleres " En la Era Digital, LuChemoS por la IguaLdad"</p>
+        </div>
+      </div>
+
+      <div class="activity-block-alt">
+        <div class="activity-image-alt">
+          <img src="sources\cursosProfesorado.jpg" width="100%">
+        </div>
+        <div class="activity-content-alt">
+          <h3>Cursos para el profesorado CEDEP</h3>
+          <p>Herramientas para un uso responsable de las tecnologías.</p>
+          <p>Ciberalumn@ ayudante.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="historia" class="history">
+    <div class="text-image-container">
+      <div class="text-content">
+        <h2>Nuestra Historia</h2>
+        <p>La asociación Brújula Gabinete Socioeducativo y Psicológico, lleva desde 2014 trabajando con un gran equipo de profesionales de la audición y lenguaje, la pedagogía, la psicología y la orientación familiar.</p>
+        <br><p>Luchamos por una sociedad en la que todas las personas podamos disfrutar de una vida completa sin barreras sociales, económicas, culturales, ideológicas, etc.  Por ello, la inclusión, la solidaridad, la lucha por la igualdad, los derechos humanos y el derecho a la salud mental son nuestros pilares fundamentales.</p>
+        <br><p>Necesitamos hacer un gran trabajo de sensibilización social incidiendo, sobre todo, en la población infantojuvenil. Crear comunidad y hacer que las personas se sientan valoradas  con una red social solida posibilita que, la persona se empodere y participe en su proyecto personal de manera activa, con el fin de lograr su autonomía.</p>
+        <a href="#newsletter-section" id="scroll-btn" class="cta-button secondary">Contacta con nosotras</a>
+      </div>
+      <div>
+        <img src="sources\fotoHistoria.png" width="100%" class="fotoHistoria">
+      </div>
+    </div>
+  </section>
+
+    <section id="equipo" class="team">
+      <h2>Nuestro Equipo</h2>
+      <div class="team-grid">
+
+        <div class="team-member">
+          <div>
+            <img src="sources\fotoMacarena.png" width="100%" class="member-avatar">
+          </div>
+          <h3>MACARENA CORONIL PÉREZ</h3>
+          <p>Directora Ejecutiva</p>
+        </div>
+
+        <div class="team-member">
+          <div>
+            <img src="sources\Andrea.jpeg" width="100%" class="member-avatar">
+          </div>
+          <h3>ANDREA GONZÁLEZ</h3>
+          <p>Coordinador de Proyectos</p>
+        </div>
+
+        <div class="team-member">
+          <div>
+            <img src="sources\Olga2.jpeg" width="100%" class="member-avatar">
+          </div>
+          <h3>OLGA CARRERO CAIRÓN</h3>
+          <p>Especialista en Desarrollo</p>
+        </div>
+
+      </div>
+      <a href="#newsletter-section" id="scroll-btn" class="cta-button secondary">Únete a nuestro equipo</a>
+      
+      <br><br><br>
+
+      <div class="text-image-container1">
+        <div id="filos" >
+          <img src="sources\filosTrabajo.jpg" width="100%" class="fotoDiferente">
+        </div>
+        <div>
+          <p>Si estás comprometida con las personas con diversidad funcional, la salud mental, con el medio ambiente, los derechos humanos, la participación y cooperación social. </p>
+          <br><p>Trabajamos patologías como Parkinson, Alzheimer, demencias.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="text-content">
+        <h2>Resolvemos Tus Dudas</h2>
+        <p>Encuentra respuestas a las preguntas más comunes sobre nuestro trabajo y cómo puedes involucrarte.</p>
+      </div>
+      
+      <div class="expandable-faq">
+
+        <div class="faq-question">
+          <div class="faq-question-header">
+            <h3>¿Trabajamos psicología adulta?</h3>
+          </div>
+          <div class="faq-question-content">
+            <p>Sí, desde brújula Gabinete Socioeducativo trabajamos con adultos...</p>
+          </div>
+        </div>
+        
+        <div class="faq-question">
+          <div class="faq-question-header">
+            <h3>¿Realizáis informes y diagnósticos específicos?</h3>
+          </div>
+          <div class="faq-question-content">
+            <p>Sí, desde brújula Gabinete Socioeducativo.</p>
+          </div>
+        </div>
+        
+        <div class="faq-question">
+          <div class="faq-question-header">
+            <h3>¿Gestionáis las becas de necesidades educativas NEAE?</h3>
+          </div>
+          <div class="faq-question-content">
+            <p>Sí, desde brújula Gabinete Socioeducativo tramitamos su beca para alumnos/as con necesidades específicas de apoyo educativo. Llevaremos el seguimiento de la solicitud de beca así como la gestión de subsanación del expediente que así lo requiera.  además le mantendremos informado de los plazos de presentación de solicitud y justificación de la beca recibida.</p>
+          </div>
+        </div>
+
+        <div class="faq-question">
+          <div class="faq-question-header">
+            <h3>¿Precio y duración de las sesiones?</h3>
+          </div>
+          <div class="faq-question-content">
+            <p>Las sesiones en Brújula Gabinete, son llevadas por profesionales de la educación y la psicología. La duración de las sesiones va desde los 45 a 55 minutos dependiendo del servicio y la profesional que le atienda. Consulta los precios sin compromiso.</p>
+          </div>
+        </div>
+        
+        <div class="faq-question">
+          <div class="faq-question-header">
+            <h3>¿Puedo cambiar de centro si me ha firmado la beca un centro con el que no obtengo los resultados esperados?</h3>
+          </div>
+          <div class="faq-question-content">
+            <p>Sí, aunque el impreso de solicitud de beca se lo haya firmado un centro en concreto, en cualquier momento puede pedir el cambio de centro. No necesita permiso de la Junta pero si debe presentar las facturas justificativas de la justificación del dinero recibido.</p>
+          </div>
+        </div>
+                
+        <div class="faq-question">
+          <div class="faq-question-header">
+            <h3>¿Trabajáis el acoso escolar o bullying?</h3>
+          </div>
+          <div class="faq-question-content">
+            <p>Sí, nuestra profesional de la psicología, es experta en casos de acoso escolar.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <h2>Nuestro Impacto</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="1500">0</div>
+          <p>Personas Ayudadas</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">0</div>
+          <p>Proyectos Completados</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="25">0</div>
+          <p>Comunidades Impactadas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section">
+      <h2>Nuestra Trayectoria</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2015</h3>
+            <p>Fundación de Brujula Social</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2017</h3>
+            <p>Primer proyecto internacional</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2020</h3>
+            <p>Expansión a 5 países</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <a href="#newsletter-section" id="scroll-btn" class="floating-cta">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      Contacta con nosotras
+    </a>
+
+    <section id="newsletter-section" class="newsletter-section">
+      <h2>Contacta con nosotras</h2>
+        <p>Llámanos o mándanos un mensaje sin compromiso</p>
+        <form class="newsletter-form">
+          <a href="mailto:" class="newsletter-button">Escríbenos</a>
+          <a href="tel:672057038" class="newsletter-button">Llámanos</a>
+        </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-address">
+          <p>Avenida de la Libertad, 11<br>
+          Edificio América, local 16<br>
+          El Puerto de Santa María, Cádiz</p>
+          <p>CIF G-72232218<br>
+          NICA: 48802</p>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-title">CONTACTA CON NOSOTRAS</div>
+        <div class="footer-phone">672 05 70 38</div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Brujula Social. Todos los derechos reservados. Web por Misael Barrera.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+ 
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      
+      // Animate hamburger icon
+      const bars = navToggle.querySelectorAll('.bar');
+      bars[0].style.transform = navLinks.classList.contains('active') 
+        ? 'rotate(45deg) translate(8px, 6px)' 
+        : 'none';
+      bars[1].style.opacity = navLinks.classList.contains('active') 
+        ? '0' 
+        : '1';
+      bars[2].style.transform = navLinks.classList.contains('active') 
+        ? 'rotate(-45deg) translate(8px, -6px)' 
+        : 'none';
+    });
+  
+    let lastScrollTop = 0; // Guarda la última posición del scroll
+
+    // CTA
+    document.getElementById("scroll-btn").addEventListener("click", function() {
+      document.getElementById("newsletter-section").scrollIntoView({ behavior: "smooth" });
+    });
+
+window.addEventListener("scroll", function() {
+    let navbar = document.querySelector(".navbar");
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Se hizo scroll hacia abajo: oculta la navbar
+        navbar.style.top = "-100px"; // Ajusta este valor según la altura de tu navbar
+    } else {
+        // Se hizo scroll hacia arriba: muestra la navbar
+        navbar.style.top = "0";
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Evita que la posición se vuelva negativa
+});
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (navLinks.classList.contains('active')) {
+            navToggle.click();
+          }
+        }
+      });
+    });
+  
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+  
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'all 0.6s ease-out';
+      observer.observe(section);
+    });
+  
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const question = header.parentElement;
+        const content = question.querySelector('.faq-question-content');
+        
+        // Close other open questions
+        document.querySelectorAll('.faq-question.active').forEach(openQuestion => {
+          if (openQuestion !== question) {
+            openQuestion.classList.remove('active');
+          }
+        });
+        
+        question.classList.toggle('active');
+      });
+    });
+  
+    // Stat Counter Animation
+    const stats = document.querySelectorAll('.stat-number');
+    
+    const animateStats = () => {
+      stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+  
+        const updateCount = () => {
+          if (current < target) {
+            current += increment;
+            stat.textContent = Math.round(current).toLocaleString();
+            requestAnimationFrame(updateCount);
+          } else {
+            stat.textContent = target.toLocaleString();
+          }
+        };
+  
+        updateCount();
+      });
+    };
+  
+    // Observe stats section
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    });
+  
+    const statsSection = document.querySelector('.stats-grid');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+  
+    // Floating CTA visibility
+    window.addEventListener('scroll', () => {
+      const floatingCTA = document.querySelector('.floating-cta');
+      if (window.scrollY > 300) {
+        floatingCTA.style.transform = 'translateX(0)';
+        floatingCTA.style.opacity = '1';
+      } else {
+        floatingCTA.style.transform = 'translateX(100px)';
+        floatingCTA.style.opacity = '0';
+      }
+    });
+  
+    // Project cards hover effect
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+      });
+    
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
+  
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = newsletterForm.querySelector('input').value;
+        // Here you would typically send this to your backend
+        alert('¡Gracias por suscribirte! Te mantendremos informado.');
+        newsletterForm.reset();
+      });
+    }
+  
+    // Add services carousel functionality
+    const services = document.querySelectorAll('.service-item');
+    let currentService = 0;
+  
+    function rotateServices() {
+      services.forEach(service => {
+        service.classList.remove('active');
+      });
+      
+      services[currentService].classList.add('active');
+      currentService = (currentService + 1) % services.length;
+    }
+  
+    // Show first service immediately
+    rotateServices();
+    
+    // Rotate services every 3 seconds
+    setInterval(rotateServices, 3000);
+  });
+
+  :root {
+    --primary-color: #b8ffa1;
+    --secondary-color: #f5f5f5;
+    --text-color: #333;
+    --link-color: #5f5f5f;
+    --cta-color: #4d4d4d;
+    --spacing: 2rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 34px;
+  }
+  
+h2 {
+    font-size: 30px;
+  }
+  
+h3 {
+    font-size: 24px;
+  }
+  
+h4 {
+    font-size: 20px;
+  }
+  
+h5 {
+    font-size: 18px;
+  }
+  
+h6 {
+    font-size: 16px;
+  }
+
+@media (max-width: 768px) {
+    h1 {
+      font-size: 28px;
+    }
+  
+    h2 {
+      font-size: 26px;
+    }
+  
+    h3 {
+      font-size: 22px;
+    }
+  
+    h4 {
+      font-size: 18px;
+    }
+  
+    h5 {
+      font-size: 16px;
+    }
+  
+    h6 {
+      font-size: 14px;
+    }
+}
+
+img {
+    border-radius: 10%;
+}
+
+.fotoDiferente {
+    width: 100%;
+    border-radius: 5%;
+}
+
+.fotoHistoria {
+    width: 100%;
+    border-radius: 1%;
+}
+
+/* Header & Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+    padding: 1rem var(--spacing);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease-in-out; /* Agregar transición suave para el cambio de posición */
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Lighter shadow */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.5s ease, border-bottom 0.5s ease; /* Transición de color y borde */
+    border-bottom: 2px solid transparent; /* Inicialmente el borde está transparente */
+}
+
+.nav-links a:hover {
+    color: var(--link-color);
+    border-bottom: 2px solid var(--link-color); /* El borde se vuelve del color del enlace */
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+#inicio {
+    height: 100vh;
+    background-image: url('sources/fotoPortada.webp');
+    background-attachment: fixed; /* Parallax effect */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Hero Content */
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Lighter shadow */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Lighter shadow */
+}
+
+.team-member p, .team-member h3, .team-member h2 {
+    text-align: center;
+}
+
+p, h3, h2 {
+    text-align: start;
+}
+
+.hero h2 {
+    text-align: center;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: linear-gradient(45deg, var(--primary-color), #90d662);
+    color: var(--text-color);
+    padding: 4rem var(--spacing);
+    margin: 0;
+}
+
+.newsletter-section p, .newsletter-section h2 {
+    text-align: center;
+}
+
+.newsletter-form {
+    max-width: 100%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    max-width: 400px;
+    gap: 1.5rem;
+    justify-content: center;  /* Centra los elementos horizontalmente */
+  }
+
+.newsletter-input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.newsletter-button {
+    padding: 1rem 3rem;
+    background: var(--text-color);
+    color: white;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.newsletter-button:hover {
+    transform: translateY(-3px);
+}
+
+/* CTA Buttons */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--cta-color);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+    margin: 1rem 0;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+.cta-button.secondary {
+    background-color: transparent;
+    border: 3px solid var(--primary-color);
+    color: var(--cta-color);
+    width: 70%;
+    text-align: center;
+}
+
+/* Sections */
+section {
+    padding: 3rem var(--spacing);
+    margin-left: 20%; /* Apply left margin */
+    margin-right: 20%; /* Apply right margin */
+    transition: transform 0.8s ease-in-out; /* Efecto ease-in-out */
+}
+
+.text-image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+    gap: 2rem;
+    align-items: center;
+}
+
+.text-image-container1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.text-image-container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.image-content img {
+    width: 80%;
+    max-width: 300px; /* Controla el tamaño máximo */
+    border-radius: 10px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.team-member {
+    text-align: center;
+    padding: 1rem;
+}
+
+.member-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 20%;
+    margin: 0 auto 1rem;
+    object-fit: cover; /* Recorta la imagen para que se ajuste sin deformarse */
+    object-position: center; /* Centra la imagen en el contenedor */  
+}
+
+/* Estilos responsivos */
+@media (max-width: 1300px) {
+    .text-image-container {
+        grid-template-columns: 1fr; /* Se adapta a una sola columna en pantallas pequeñas */ 
+    }
+
+    section {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .text-image-container2 > *:first-child {
+        order: 2;
+    }
+    
+    .text-image-container2 > *:last-child {
+        order: 1;
+    }
+}
+
+@media (max-width: 800px) {
+    .text-image-container1 {
+        grid-template-columns: 1fr; /* Se adapta a una sola columna en pantallas pequeñas */ 
+        margin-right: 10%;
+    }
+
+    section {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    #filos {
+        align-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+}
+
+.stats-section p {
+    text-align: center;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.faq-item {
+    padding: 1.5rem;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* New Blocks Styles */
+.expandable-faq {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.faq-question {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-question-header {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--secondary-color);
+}
+
+.faq-question-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.faq-question-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 1rem;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.faq-question.active .faq-question-content {
+    max-height: 1000px;
+    padding: 1rem;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.faq-question-header::after {
+    content: '+';
+    font-size: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-question.active .faq-question-header::after {
+    transform: rotate(45deg);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.stat-item {
+    padding: 2rem;
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    color: var(--cta-color);
+    font-weight: bold;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    height: 250px;
+    background: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-section {
+    background: var(--secondary-color);
+    padding: 4rem var(--spacing);
+    text-align: center;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.quote-icon {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 3rem auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+}
+
+.timeline-item {
+    margin: 2rem 0;
+    position: relative;
+    width: 50%;
+    padding: 0 2rem;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Activity Blocks */
+.activities-section-alt {
+    padding: 2rem 0;
+    background: var(--secondary-color);
+}
+
+.activity-grid-alt {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.activity-block-alt {
+    display: flex;
+    padding: 2rem var(--spacing);
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.activity-block-alt:hover {
+    transform: translateX(10px);
+}
+
+.activity-block-alt:nth-child(odd) {
+    background-color: var(--secondary-color);
+}
+
+.activity-block-alt:nth-child(even) {
+    background-color: rgba(122, 193, 66, 0.1);
+}
+
+.activity-image-alt {
+    width: 100px;
+    height: 100px;
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+.activity-content-alt {
+    flex: 1;
+}
+
+.activity-content-alt h3 {
+    color: var(--cta-color);
+    margin-bottom: 0.5rem;
+}
+
+.activity-content-alt p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Services Carousel */
+.services-carousel {
+    margin: 2rem 0;
+    min-height: 40px;
+    position: relative;
+}
+
+.service-item {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--cta-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.service-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: white;
+    padding: 3rem var(--spacing);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    text-align: left;
+    padding: 2rem 0;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-address {
+    line-height: 1.6;
+}
+
+.footer-contact {
+    text-align: right;
+}
+
+.footer-contact-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-phone {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Enhanced Transitions */
+.floating-cta {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: var(--cta-color);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(122, 193, 66, 0.3);
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.floating-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(122, 193, 66, 0.4);
+}
+
+/* Project Cards */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.project-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image {
+    height: 200px;
+    background: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.project-tag {
+    background: var(--secondary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+/* Impact Numbers with Animation */
+.impact-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    display: inline-block;
+    position: relative;
+}
+
+.impact-number::after {
+    content: '+'; 
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: -1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .text-image-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 0;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 2rem;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-contact {
+        text-align: center;
+    }
+
+    .activity-block-alt {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .activity-image-alt {
+        margin: 0 0 1rem 0;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .floating-cta {
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#inicio {
+    margin: 0%;
+}

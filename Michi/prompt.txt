@@ -1,0 +1,441 @@
+quiero una web con estas especificaciones: A fascinating inmersive webpage with beautifull and modern design, with a lot of fx over all the page. It has 4 parts, (with its own wide header (that isnt static)): Home, My Projects, My Music About me. Im a creator: I produce music, I create a lot of it just with my mouth, I also have a lot of thing of ammusement parks (in fact, thats the most important part of the web) like a game that is on steam called: The Kraken, and in start its a ride concept that i created. Do it so visual as it has a png of the atraction in 1 half of the web, and text in the other, or cool design things like this. I want you to design the complete web in the 4 tabs. It has to have a lot of blurr fx, and it has to be in darkmode.
+
+
+me gusta esta: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immersive Creator Webpage</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #4D96FF;
+        }
+
+        nav a.active {
+            color: #FFD93D;
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        /* Home Section */
+        #home {
+            background: radial-gradient(circle at center, #1e1e1e, #000000);
+        }
+
+        #home .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        #home p {
+            font-size: 1.5rem;
+        }
+
+        /* My Projects Section */
+        #projects {
+            background: linear-gradient(to right, #1e1e1e, #000000);
+        }
+
+        #projects .project {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+
+        #projects img {
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        #projects .text {
+            width: 40%;
+            padding-left: 2rem;
+        }
+
+        /* My Music Section */
+        #music {
+            background: linear-gradient(to bottom, #1e1e1e, #000000);
+        }
+
+        #music .album {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #music img {
+            width: 300px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        #music p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* About Me Section */
+        #about {
+            background: linear-gradient(to left, #1e1e1e, #000000);
+        }
+
+        #about .profile {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 100vh;
+            padding: 2rem;
+        }
+
+        #about img {
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        #about .bio {
+            width: 50%;
+        }
+
+        /* Blur Effects */
+        .blur-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            #projects .project,
+            #about .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #projects img,
+            #about img {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#home" data-section="home" class="active">Home</a>
+        <a href="#projects" data-section="projects">My Projects</a>
+        <a href="#music" data-section="music">My Music</a>
+        <a href="#about" data-section="about">About Me</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="active">
+        <div class="blur-bg" style="background-image: url('https://via.placeholder.com/1920x1080')"></div>
+        <div class="content">
+            <h1>Welcome to My World</h1>
+            <p>A creator of music and amusement park concepts.</p>
+        </div>
+    </section>
+
+    <!-- My Projects Section -->
+    <section id="projects">
+        <div class="blur-bg" style="background-image: url('https://via.placeholder.com/1920x1080')"></div>
+        <div class="project">
+            <img src="https://via.placeholder.com/600x400" alt="The Kraken">
+            <div class="text">
+                <h2>The Kraken</h2>
+                <p>A thrilling ride concept turned into a game on Steam. Dive into the depths of imagination!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Music Section -->
+    <section id="music">
+        <div class="blur-bg" style="background-image: url('https://via.placeholder.com/1920x1080')"></div>
+        <div class="album">
+            <img src="https://via.placeholder.com/300x300" alt="Music Album">
+            <p>Experience my unique soundscapes created with just my voice and imagination.</p>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="blur-bg" style="background-image: url('https://via.placeholder.com/1920x1080')"></div>
+        <div class="profile">
+            <img src="https://via.placeholder.com/400x400" alt="Profile Picture">
+            <div class="bio">
+                <h2>About Me</h2>
+                <p>I am a creator who thrives on innovation. From producing music with my voice to designing exhilarating amusement park rides, I bring ideas to life through passion and creativity.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            function showSection(id) {
+                sections.forEach(section => section.classList.remove('active'));
+                document.getElementById(id)?.classList.add('active');
+            }
+
+            function handleNavLinkClick(event) {
+                event.preventDefault();
+                const sectionId = this.dataset.section;
+                showSection(sectionId);
+                history.pushState(null, null, `#${sectionId}`);
+                navLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', handleNavLinkClick);
+            });
+
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                showSection(sectionId);
+            } else {
+                showSection('home');
+                navLinks[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
+
+y este fondo: <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Órbita Abstracta con Efectos</title>
+    <style>
+        /* Estilos básicos */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Fondo negro para efecto espacial */
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            filter: blur(1px); /* Desenfoque sutil en todo el contenedor */
+        }
+
+        .block {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            transition: border-radius 1s ease, transform 1s ease;
+            box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff;
+            filter: blur(0.5px); /* Desenfoque ligero en los bloques */
+        }
+
+        .block.spin {
+            animation: spin 18s linear infinite; /* Giro más lento y suave */
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Partículas de fondo */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 10 bloques para un efecto más limpio y menos cargado -->
+        <div class="block" id="block1"></div>
+        <div class="block" id="block2"></div>
+        <div class="block" id="block3"></div>
+        <div class="block" id="block4"></div>
+        <div class="block" id="block5"></div>
+        <div class="block" id="block6"></div>
+        <div class="block" id="block7"></div>
+        <div class="block" id="block8"></div>
+        <div class="block" id="block9"></div>
+        <div class="block" id="block10"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var centerX = window.innerWidth / 10;
+            var centerY = window.innerHeight / 2;
+            var angles = [];
+            var radii = [];
+            var speeds = [];
+            var shapeStates = [];
+
+            // Inicializar parámetros para cada bloque
+            $(".block").each(function(index) {
+                angles[index] = Math.random() * 360;
+                radii[index] = Math.random() * 400 + 100; // Órbita entre 100 y 500px
+                speeds[index] = Math.random() * 0.8 + 0.4; // Más lenta: 0.4 a 1.2 grados por frame
+                shapeStates[index] = 0;
+                $(this).addClass('spin');
+            });
+
+            // Crear 200 partículas de fondo para un efecto más rico
+            for (var i = 0; i < 200; i++) {
+                var particle = $('<div class="particle"></div>');
+                particle.css({
+                    left: Math.random() * window.innerWidth + 'px',
+                    top: Math.random() * window.innerHeight + 'px',
+                    animationDuration: (Math.random() * 3 + 1) + 's' // Duraciones variadas
+                });
+                $('.container').append(particle);
+            }
+
+            function updateBlocks() {
+                $(".block").each(function(index) {
+                    angles[index] += speeds[index];
+                    if (angles[index] >= 360) angles[index] -= 360;
+
+                    var rad = angles[index] * (Math.PI / 180);
+                    var newLeft = centerX + radii[index] * Math.cos(rad) - $(this).width() / 2;
+                    var newTop = centerY + radii[index] * Math.sin(rad) - $(this).height() / 2;
+
+                    // Cambio de forma más frecuente y suave
+                    if (Math.random() < 0.02) {
+                        shapeStates[index] = 1 - shapeStates[index];
+                        var newRadius = shapeStates[index] ? '50%' : '10px';
+                        $(this).css('border-radius', newRadius);
+                    }
+
+                    // Efecto de zoom aleatorio
+                    if (Math.random() < 0.01) {
+                        var scale = Math.random() * 1.5 + 1.75; // Escala entre 0.75 y 1.25
+                        $(this).css('transform', `scale(${scale}) rotate(${angles[index]}deg)`);
+                    }
+
+                    $(this).css({
+                        left: newLeft + 'px',
+                        top: newTop + 'px'
+                    });
+                });
+            }
+
+            // Detección de colisiones con rebote
+            function checkCollisions() {
+                var blocks = $(".block");
+                for (var i = 0; i < blocks.length; i++) {
+                    for (var j = i + 1; j < blocks.length; j++) {
+                        var b1 = $(blocks[i]);
+                        var b2 = $(blocks[j]);
+                        var b1Pos = b1.position();
+                        var b2Pos = b2.position();
+                        var dx = b1Pos.left - b2Pos.left;
+                        var dy = b1Pos.top - b2Pos.top;
+                        var distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 60) { // Tamaño de los bloques
+                            var tempSpeed = speeds[i];
+                            speeds[i] = speeds[j];
+                            speeds[j] = tempSpeed;
+                        }
+                    }
+                }
+            }
+
+            // Actualizar cada 16ms (~60fps)
+            setInterval(function() {
+                updateBlocks();
+                checkCollisions();
+            }, 16);
+
+            // Iniciar automáticamente
+            $(".block").show();
+        });
+    </script>
+</body>
+</html>

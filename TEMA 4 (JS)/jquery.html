@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Jquery</title>
+
+    <style>
+        html {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 20%;
+            padding-top: 3%;
+        }
+
+        #panel, #flip {
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+
+        #panel {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h2>Holaa</h2>
+        <p>Esto no se va a ocultar, pero lo de después sí</p>
+    </div>
+
+    <div id="test" class="test1">
+        <h2>Adioos</h2>
+        <p>Esto se va a ocultar cuando le hagas click al botón</p>
+        <button id="borrarId">A borrar id test</button>
+        <button id="borrarClass">A borrar class test 1</button>
+    </div>
+
+    <div id="test" class="test1">
+        <h2>La lista</h2>
+        <p>Esto va a ocultar el primer elemento de la lista</p>
+        <ul>
+            <li>Uno</li>
+            <li>Dos</li>
+            <li>Tres</li>
+        </ul>
+
+        <ul>
+            <li>Uno</li>
+            <li>Dos</li>
+            <li>Tres</li>
+        </ul>
+        <button id="ocultame">Ocultame</button>
+    </div>
+
+    
+    <div>
+        <h2>Panel desplegable</h2>
+        <div id="flip">Clica para desplegar el panel</div>
+        <div id="panel">:)</div>
+    </div>
+
+    <script>
+        // Es una buena práctica el solo ejecutar código cuando el html esté cargado
+        $(document).ready(function(){
+            
+//            function ocultame() { // Esto no funciona
+//                $("#test").hide();
+//            }
+
+// HIDE (al contrario los muestra: SHOW)
+            $("#borrarId").click(function(){ // Si se pone #test, al tocar cualquier elemento del div test, se ocultará
+                $("#test").hide();
+            });
+
+            $("#borrarClass").click(function(){ // Con un id, solo se oculta el primero que lo lleve,
+            // pero con una class se ocultan todos los que lo lleven
+                $(".test1").hide();
+            });
+
+            $("#ocultame").dblclick(function(){ // Aquí tenemos que hacer doble click. Con * ocultamos todo
+                $("ul li:first").hide();
+            });
+
+// MOUSE*
+            $("#ocultame").mouseenter(function(){ // Hay muchas funciones de ratón
+                $(this).css("background-color", "black")
+                $(this).css("color", "white")
+                $(this).css("transition-duration", "500ms")
+            });
+
+            $("#ocultame").mouseleave(function(){ 
+                $(this).css("background-color", "white")
+                $(this).css("color", "black")
+            });
+
+// FX
+            var desplegado = 0;
+            $("#flip").click(function(){ // Para este efecto, hay que poner el panel como display: none; en el css
+                if (desplegado === 0) {
+                    $("#panel").slideDown("slow")
+                    desplegado = 1;
+                } else {
+                    $("#panel").slideUp("slow");
+                    desplegado = 0;
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

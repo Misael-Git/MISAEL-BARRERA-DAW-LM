@@ -171,20 +171,6 @@
 <body>
     <div class="orbit-container"></div>
 
-    <div class="container">
-        <!-- 10 bloques para un efecto más limpio y menos cargado -->
-        <div class="block" id="block1"></div>
-        <div class="block" id="block2"></div>
-        <div class="block" id="block3"></div>
-        <div class="block" id="block4"></div>
-        <div class="block" id="block5"></div>
-        <div class="block" id="block6"></div>
-        <div class="block" id="block7"></div>
-        <div class="block" id="block8"></div>
-        <div class="block" id="block9"></div>
-        <div class="block" id="block10"></div>
-    </div>
-
     <nav>
         <a href="#home">Home</a>
         <a href="#projects">My Projects</a>
@@ -251,91 +237,38 @@
 
         // Orbit animation
         $(document).ready(function() {
-            var centerX = window.innerWidth / 10;
-            var centerY = window.innerHeight / 2;
-            var angles = [];
-            var radii = [];
-            var speeds = [];
-            var shapeStates = [];
-
-            // Inicializar parámetros para cada bloque
-            $(".block").each(function(index) {
-                angles[index] = Math.random() * 360;
-                radii[index] = Math.random() * 600 + 100; // Órbita entre 100 y 500px
-                speeds[index] = Math.random() * 0.8 + 0.4; // Más lenta: 0.4 a 1.2 grados por frame
-                shapeStates[index] = 0;
-                $(this).addClass('spin');
-            });
-
-            // Crear 200 partículas de fondo para un efecto más rico
-            for (var i = 0; i < 200; i++) {
-                var particle = $('<div class="particle"></div>');
-                particle.css({
-                    left: Math.random() * window.innerWidth + 'px',
-                    top: Math.random() * window.innerHeight + 'px',
-                    animationDuration: (Math.random() * 3 + 1) + 's' // Duraciones variadas
-                });
-                $('.container').append(particle);
+            const container = $('.orbit-container');
+            
+            // Create orbiting blocks
+            for(let i = 0; i < 10; i++) {
+                const block = $('<div>').addClass('block');
+                container.append(block);
             }
 
-            function updateBlocks() {
-                $(".block").each(function(index) {
-                    angles[index] += speeds[index];
-                    if (angles[index] >= 360) angles[index] -= 360;
+            // Create particles
+            for(let i = 0; i < 200; i++) {
+                const particle = $('<div>').addClass('particle')
+                    .css({
+                        left: Math.random() * 100 + 'vw',
+                        top: Math.random() * 100 + 'vh',
+                        animationDuration: Math.random() * 3 + 1 + 's'
+                    });
+                container.append(particle);
+            }
 
-                    var rad = angles[index] * (Math.PI / 180);
-                    var newLeft = centerX + radii[index] * Math.cos(rad) - $(this).width() / 2;
-                    var newTop = centerY + radii[index] * Math.sin(rad) - $(this).height() / 2;
-
-                    // Cambio de forma más frecuente y suave
-                    if (Math.random() < 0.02) {
-                        shapeStates[index] = 1 - shapeStates[index];
-                        var newRadius = shapeStates[index] ? '50%' : '10px';
-                        $(this).css('border-radius', newRadius);
-                    }
-
-                    // Efecto de zoom aleatorio
-                    if (Math.random() < 0.01) {
-                        var scale = Math.random() * 1 + 0.75; // Escala entre 0.75 y 1.25
-                        $(this).css('transform', `scale(${scale}) rotate(${angles[index]}deg)`);
-                    }
-
+            function animate() {
+                $('.block').each(function() {
+                    const angle = Date.now() * 0.0005;
+                    const x = Math.cos(angle * (Math.random() * 0.5 + 0.5)) * 50;
+                    const y = Math.sin(angle * (Math.random() * 0.5 + 0.5)) * 50;
                     $(this).css({
-                        left: newLeft + 'px',
-                        top: newTop + 'px'
+                        transform: `translate(${x}vw, ${y}vh) rotate(${angle}rad)`,
+                        background: `hsl(${Math.random() * 360}, 50%, 50%)`
                     });
                 });
+                requestAnimationFrame(animate);
             }
-
-            // Detección de colisiones con rebote
-            function checkCollisions() {
-                var blocks = $(".block");
-                for (var i = 0; i < blocks.length; i++) {
-                    for (var j = i + 1; j < blocks.length; j++) {
-                        var b1 = $(blocks[i]);
-                        var b2 = $(blocks[j]);
-                        var b1Pos = b1.position();
-                        var b2Pos = b2.position();
-                        var dx = b1Pos.left - b2Pos.left;
-                        var dy = b1Pos.top - b2Pos.top;
-                        var distance = Math.sqrt(dx * dx + dy * dy);
-                        if (distance < 60) { // Tamaño de los bloques
-                            var tempSpeed = speeds[i];
-                            speeds[i] = speeds[j];
-                            speeds[j] = tempSpeed;
-                        }
-                    }
-                }
-            }
-
-            // Actualizar cada 16ms (~60fps)
-            setInterval(function() {
-                updateBlocks();
-                checkCollisions();
-            }, 16);
-
-            // Iniciar automáticamente
-            $(".block").show();
+            animate();
         });
     </script>
 </body>

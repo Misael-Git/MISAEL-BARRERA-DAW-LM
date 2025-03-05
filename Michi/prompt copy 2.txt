@@ -1,3 +1,5 @@
+tengo este código:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,20 +173,6 @@
 <body>
     <div class="orbit-container"></div>
 
-    <div class="container">
-        <!-- 10 bloques para un efecto más limpio y menos cargado -->
-        <div class="block" id="block1"></div>
-        <div class="block" id="block2"></div>
-        <div class="block" id="block3"></div>
-        <div class="block" id="block4"></div>
-        <div class="block" id="block5"></div>
-        <div class="block" id="block6"></div>
-        <div class="block" id="block7"></div>
-        <div class="block" id="block8"></div>
-        <div class="block" id="block9"></div>
-        <div class="block" id="block10"></div>
-    </div>
-
     <nav>
         <a href="#home">Home</a>
         <a href="#projects">My Projects</a>
@@ -251,6 +239,122 @@
 
         // Orbit animation
         $(document).ready(function() {
+            const container = $('.orbit-container');
+            
+            // Create orbiting blocks
+            for(let i = 0; i < 10; i++) {
+                const block = $('<div>').addClass('block');
+                container.append(block);
+            }
+
+            // Create particles
+            for(let i = 0; i < 200; i++) {
+                const particle = $('<div>').addClass('particle')
+                    .css({
+                        left: Math.random() * 100 + 'vw',
+                        top: Math.random() * 100 + 'vh',
+                        animationDuration: Math.random() * 3 + 1 + 's'
+                    });
+                container.append(particle);
+            }
+
+            function animate() {
+                $('.block').each(function() {
+                    const angle = Date.now() * 0.0005;
+                    const x = Math.cos(angle * (Math.random() * 0.5 + 0.5)) * 50;
+                    const y = Math.sin(angle * (Math.random() * 0.5 + 0.5)) * 50;
+                    $(this).css({
+                        transform: `translate(${x}vw, ${y}vh) rotate(${angle}rad)`,
+                        background: `hsl(${Math.random() * 360}, 50%, 50%)`
+                    });
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>
+
+y quiero que corrijas el fondo, que era este:
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Órbita Abstracta con Efectos</title>
+    <style>
+        /* Estilos básicos */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Fondo negro para efecto espacial */
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            filter: blur(1px); /* Desenfoque sutil en todo el contenedor */
+        }
+
+        .block {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            transition: border-radius 1s ease, transform 1s ease;
+            box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff;
+            filter: blur(0.5px); /* Desenfoque ligero en los bloques */
+        }
+
+        .block.spin {
+            animation: spin 18s linear infinite; /* Giro más lento y suave */
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Partículas de fondo */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 10 bloques para un efecto más limpio y menos cargado -->
+        <div class="block" id="block1"></div>
+        <div class="block" id="block2"></div>
+        <div class="block" id="block3"></div>
+        <div class="block" id="block4"></div>
+        <div class="block" id="block5"></div>
+        <div class="block" id="block6"></div>
+        <div class="block" id="block7"></div>
+        <div class="block" id="block8"></div>
+        <div class="block" id="block9"></div>
+        <div class="block" id="block10"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
             var centerX = window.innerWidth / 10;
             var centerY = window.innerHeight / 2;
             var angles = [];
@@ -261,7 +365,7 @@
             // Inicializar parámetros para cada bloque
             $(".block").each(function(index) {
                 angles[index] = Math.random() * 360;
-                radii[index] = Math.random() * 600 + 100; // Órbita entre 100 y 500px
+                radii[index] = Math.random() * 400 + 100; // Órbita entre 100 y 500px
                 speeds[index] = Math.random() * 0.8 + 0.4; // Más lenta: 0.4 a 1.2 grados por frame
                 shapeStates[index] = 0;
                 $(this).addClass('spin');
@@ -296,7 +400,7 @@
 
                     // Efecto de zoom aleatorio
                     if (Math.random() < 0.01) {
-                        var scale = Math.random() * 1 + 0.75; // Escala entre 0.75 y 1.25
+                        var scale = Math.random() * 1.5 + 1.75; // Escala entre 0.75 y 1.25
                         $(this).css('transform', `scale(${scale}) rotate(${angles[index]}deg)`);
                     }
 
@@ -340,3 +444,5 @@
     </script>
 </body>
 </html>
+
+y tambien quiero que le hagas más diseños de bloques diferentes, acorde al tema, y manteniendo los otros bloques. sobre todo necesito bloques de texto, texto e imágenes, header con texto..., algún desplegable, o cosas así...
