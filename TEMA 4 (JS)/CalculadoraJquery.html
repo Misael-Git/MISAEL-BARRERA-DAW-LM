@@ -80,7 +80,6 @@
         <p>Introduce la altura: <input type="number" class="altura" min="0"></p>
         <button class="calcular">Calcular</button>
         <div class="resultado"></div>
-        <div class="error"></div>
     </div>
 
     <script>
@@ -88,18 +87,16 @@
             $(".calcular").click(function() {
                 var base = parseFloat($(".base").val());
                 var altura = parseFloat($(".altura").val());
-
-                if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
-                    $(".resultado").html("");
-                    $(".error").html("⚠️ Introduce valores válidos (números mayores a 0).");
-                } else {
+    
+                if (base > 0 && altura > 0) {
                     var resultado = 0.5 * base * altura;
-                    $(".resultado").html("El área del triángulo es: <strong>" + resultado.toFixed(2) + "</strong>");
-                    $(".error").html("");
+                    $(".resultado").html("El área del triángulo es: " + resultado.toFixed(2));
+                } else {
+                    $(".resultado").html("");
                 }
             });
         });
-    </script>
+    </script>    
 
 </body>
 </html>
