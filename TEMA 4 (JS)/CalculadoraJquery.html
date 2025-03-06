@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Calculadora con jQuery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 300px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .calcular {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .calcular:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .resultado {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cálculo del Área del Triángulo</h1>
+    
+    <div class="container">
+        <p>Introduce la base: <input type="number" class="base" min="0"></p>
+        <p>Introduce la altura: <input type="number" class="altura" min="0"></p>
+        <button class="calcular">Calcular</button>
+        <div class="resultado"></div>
+        <div class="error"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".calcular").click(function() {
+                var base = parseFloat($(".base").val());
+                var altura = parseFloat($(".altura").val());
+
+                if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
+                    $(".resultado").html("");
+                    $(".error").html("⚠️ Introduce valores válidos (números mayores a 0).");
+                } else {
+                    var resultado = 0.5 * base * altura;
+                    $(".resultado").html("El área del triángulo es: <strong>" + resultado.toFixed(2) + "</strong>");
+                    $(".error").html("");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

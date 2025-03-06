@@ -1,136 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Ejercicios Jquery</title>
-
+    <title>Ejercicios jQuery</title>
     <style>
-        html {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            padding: 20%;
-            padding-top: 3%;
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
         }
-
-        #panel, #panel2, #panel3, #flip {
-            padding: 5px;
+        p {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+        }
+        #caja {
+            width: 200px;
+            height: 100px;
+            background-color: lightgray;
             text-align: center;
-            background-color: #e5eecc;
-            border: solid 1px #c3c3c3;
-        }
-
-        #panel, #panel2, #panel3 {
-            padding: 50px;
-            display: none;
+            line-height: 100px;
+            margin-top: 20px;
+            border: 2px solid black;
         }
     </style>
-
 </head>
 <body>
-    <div>
-        <h2>Holaa</h2>
-        <p>Esto no se va a ocultar, pero lo de después sí</p>
-    </div>
+
+    <h2>Ejercicio 1</h2>
+    <p class="impar">1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in justo id nunc suscipit fringilla.</p>
+    <p class="par">2 Vestibulum ac ligula at ipsum fermentum dapibus. Suspendisse potenti.</p>
+    <p class="impar">3 Curabitur vehicula diam ut lectus efficitur, ut suscipit elit hendrerit.</p>
+    <p class="par">4 Aliquam erat volutpat. In hac habitasse platea dictumst.</p>
+    <p class="impar">5 Phasellus tristique libero nec nulla fermentum, nec ultricies ex tristique.</p>
+    <p class="par">6 Sed tincidunt, purus nec fermentum posuere, lorem lacus maximus urna, vel bibendum velit augue eget mauris.</p>
 
     <div>
         <button id="ocultarPares">Ocultar pares</button>
         <button id="ocultarImpares">Ocultar impares</button>
-        <button id="mostrarPares">Ocultar pares</button>
-        <button id="mostrarImpares">Ocultar impares</button>
+        <button id="mostrarPares">Mostrar pares</button>
+        <button id="mostrarImpares">Mostrar impares</button>
     </div>
 
+    <h2>Ejercicio 2</h2>
+    <div id="caja">Pasa el ratón aquí</div>
+
     <script>
-        $(document).ready(function(){
-
-// HIDE
-            $("#ocultarPares").click(function(){ // Si se pone #test, al tocar cualquier elemento del div test, se ocultará
-                $("#pares").hide();
+        $(document).ready(function() {
+            // Ejercicio 1
+            $("#ocultarPares").click(function() {
+                $(".par").hide(); 
             });
 
-            $("#ocultarImpares").click(function(){ // Con un id, solo se oculta el primero que lo lleve,
-            // pero con una class se ocultan todos los que lo lleven
-                $(".impares").hide();
+            $("#ocultarImpares").click(function() {
+                $(".impar").hide(); 
             });
 
-            $("#ocultame").dblclick(function(){ // Aquí tenemos que hacer doble click. Con * ocultamos todo
-                $("ul li:first").hide();
+            $("#mostrarPares").click(function() {
+                $(".par").show(); 
             });
 
-// MOUSE*
-            $("#ocultame").mouseenter(function(){ // Hay muchas funciones de ratón
-                $(this).css("background-color", "black")
-                $(this).css("color", "white")
-                $(this).css("transition-duration", "500ms")
+            $("#mostrarImpares").click(function() {
+                $(".impar").show(); 
             });
 
-            $("#ocultame").mouseleave(function(){ 
-                $(this).css("background-color", "white")
-                $(this).css("color", "black")
-            });
-
-// FX
-            $("#a").click(function(){ // Para este efecto, hay que poner el panel como display: none; en el css
-                var desplegado = 0;
-                for (var i = 0; i < 0; i++) {
-                    if (desplegado === 0) {
-                    $("#panel").slideDown("slow")
-                    desplegado = 1;
-                    setTimeout(togglePanel, 1000);
-                } else if (desplegado === 1) {
-                    $("#panel").slideUp("slow");
-                    desplegado = 2;
-                    setTimeout(togglePanel, 1000);
-                } else if (desplegado === 2) {
-                    $("#panel").slideUp("slow");
-                    desplegado = 3;
-                    setTimeout(togglePanel, 1000);
-                } else if (desplegado === 3) {
-                    $("#panel").slideDown("slow")
-                    desplegado = 0
-                    setTimeout(togglePanel, 1000);
+            // Ejercicio 2
+            $("#caja").hover(
+                function() { 
+                    $(this).css("background-color", "blue"); 
+                },
+                function() { 
+                    $(this).css("background-color", "lightgray"); 
                 }
-                
-                }
-            });
-
-            // Definir la función togglePanel fuera del evento click para que sea accesible
-            function togglePanel(direction) {
-                $("#panel")[direction]("slow", function() {
-                    // Cambiar la dirección para la próxima animación
-                    direction = direction === "slideDown" ? "slideUp" : "slideDown";
-                    // Programar la próxima animación después de un retraso
-                    setTimeout(function() {
-                        togglePanel(direction);
-                    }, 800);
-                });
-
-                $("#panel2")[direction]("slow", function() {
-                    // Cambiar la dirección para la próxima animación
-                    direction = direction === "slideDown" ? "slideUp" : "slideDown";
-                    // Programar la próxima animación después de un retraso
-                    setTimeout(function() {
-                        togglePanel(direction);
-                    }, 1000);
-                });
-
-                $("#panel3")[direction]("slow", function() {
-                    // Cambiar la dirección para la próxima animación
-                    direction = direction === "slideDown" ? "slideUp" : "slideDown";
-                    // Programar la próxima animación después de un retraso
-                    setTimeout(function() {
-                        togglePanel(direction);
-                    }, 1200);
-                });
-
-            }
-
-            $("#flip").click(function() {
-                // Iniciar el bucle de alternancia con slideDown
-                togglePanel("slideDown");
-            });
-
+            );
         });
     </script>
+
 </body>
 </html>
