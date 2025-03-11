@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Calculadora con jQuery</title>
+    <title>Calculadora Básica con jQuery</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -34,6 +34,14 @@
         }
 
         input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        select {
             width: 100%;
             padding: 8px;
             margin: 5px 0;
@@ -73,26 +81,64 @@
 </head>
 <body>
 
-    <h1>Cálculo del Área del Triángulo</h1>
+    <h1>Calculadora Básica</h1>
     
     <div class="container">
-        <p>Introduce la base: <input type="number" class="base" min="0"></p>
-        <p>Introduce la altura: <input type="number" class="altura" min="0"></p>
+        <p>Primer número: <input type="number" class="numero1" min="0"></p>
+        <p>Operación: 
+            <select class="operacion">
+                <option value="suma">+</option>
+                <option value="resta">-</option>
+                <option value="multiplicacion">*</option>
+                <option value="division">/</option>
+            </select>
+        </p>
+        <p>Segundo número: <input type="number" class="numero2" min="0"></p>
         <button class="calcular">Calcular</button>
         <div class="resultado"></div>
+        <div class="error"></div>
     </div>
 
     <script>
         $(document).ready(function() {
             $(".calcular").click(function() {
-                var base = parseFloat($(".base").val());
-                var altura = parseFloat($(".altura").val());
-    
-                if (base > 0 && altura > 0) {
-                    var resultado = 0.5 * base * altura;
-                    $(".resultado").html("El área del triángulo es: " + resultado.toFixed(2));
+                var numero1 = parseFloat($(".numero1").val());
+                var numero2 = parseFloat($(".numero2").val());
+                var operacion = $(".operacion").val();
+                var resultado = 0;
+                var error = "";
+
+                if (isNaN(numero1) || isNaN(numero2)) {
+                    error = "Por favor, introduce números válidos.";
                 } else {
+                    switch (operacion) {
+                        case "suma":
+                            resultado = numero1 + numero2;
+                            break;
+                        case "resta":
+                            resultado = numero1 - numero2;
+                            break;
+                        case "multiplicacion":
+                            resultado = numero1 * numero2;
+                            break;
+                        case "division":
+                            if (numero2 === 0) {
+                                error = "No se puede dividir entre cero.";
+                            } else {
+                                resultado = numero1 / numero2;
+                            }
+                            break;
+                        default:
+                            error = "Operación no válida.";
+                    }
+                }
+
+                if (error) {
                     $(".resultado").html("");
+                    $(".error").html(error);
+                } else {
+                    $(".resultado").html("Resultado: " + resultado.toFixed(2));
+                    $(".error").html("");
                 }
             });
         });
