@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Tablas de multiplicar</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h3>Tablas de multiplicar (1 a 10)</h3>
+    <p>Del 1 al <input type="number" id="numero" min="1"></p>
+    <button class="calcular">Calcular</button>
+    <div class="resultado"></div>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $(".calcular").click(function() {
+                var numero = parseFloat($("#numero").val());
+                let resultado = [];
+
+                for (let i = 1; i <= 10; i++) {
+                    resultado.push("<h4>Tabla de multiplicar del " + i + "</h4>");
+                    for (let j = 1; j <= numero; j++) {
+                        resultado.push(i + "x" + j + " = " + i*j + "<br>");
+                    }
+                    $(".resultado").html(resultado);
+                }
+
+            });
+
+        });
+    </script>
+</body>

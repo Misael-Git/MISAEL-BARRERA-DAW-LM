@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmins="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Oposiciones 2018</title>
+</head>
+
+<body>
+    <p id="contenido_1">[1] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in justo id nunc suscipit fringilla. Vestibulum ac ligula at ipsum fermentum dapibus. Suspendisse potenti.</p>
+    <a id="enlace_1" href="#">Ocultar contenido</a>
+    <br>
+
+    <p id="contenido_2">[2] Curabitur vehicula diam ut lectus efficitur, ut suscipit elit hendrerit. Aliquam erat volutpat. In hac habitasse platea dictumst.</p>
+    <a id="enlace_2" href="#">Ocultar contenido</a>
+    <br>
+
+    <p id="contenido_3">[3] Phasellus tristique libero nec nulla fermentum, nec ultricies ex tristique. Sed tincidunt, purus nec fermentum posuere, lorem lacus maximus urna, vel bibendum velit augue eget mauris.</p>
+    <a id="enlace_3" href="#">Ocultar contenido</a>
+    <br>
+
+    <script>
+        $(document).ready(function() {
+            // P 1
+            let enlace1 = true;
+            $("#enlace_1").click(function() {
+                if (enlace1) {
+                    $("#contenido_1").hide(); 
+                    $("#enlace_1").text("Mostrar contenido"); 
+                    enlace1 = false;
+                } else {
+                    $("#contenido_1").show(); 
+                    $("#enlace_1").text("Ocultar contenido"); 
+                    enlace1 = true;
+                }
+            });
+
+            // P 2
+            let enlace2 = true;
+            $("#enlace_2").click(function() {
+                if (enlace2) {
+                    $("#contenido_2").hide(); 
+                    $("#enlace_2").text("Mostrar contenido"); 
+                    enlace2 = false;
+                } else {
+                    $("#contenido_2").show(); 
+                    $("#enlace_2").text("Ocultar contenido"); 
+                    enlace2 = true;
+                }
+            });
+
+            // P 3
+            let enlace3 = true;
+            $("#enlace_3").click(function() {
+                if (enlace3) {
+                    $("#contenido_3").hide(); 
+                    $("#enlace_3").text("Mostrar contenido"); 
+                    enlace3 = false;
+                } else {
+                    $("#contenido_3").show(); 
+                    $("#enlace_3").text("Ocultar contenido"); 
+                    enlace3 = true;
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
