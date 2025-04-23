@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario IA - Selección de Vehículo</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 36px;
+    }
+    h2 {
+      color: #2c3e50;
+      font-size: 28px;
+    }
+    .form-container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    fieldset {
+      border: 2px solid #3498db;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-weight: bold;
+      color: #3498db;
+    }
+    label {
+      display: inline-block;
+      margin-right: 20px;
+      font-size: 16px;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .resultado {
+      margin-top: 30px;
+      padding: 10px;
+      background-color: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      border-radius: 5px;
+      font-size: 18px;
+      color: #27ae60;
+    }
+    .error {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Selección de Características del Vehículo</h1>
+
+<div class="form-container">
+  <form id="formularioIA">
+    <fieldset>
+      <legend><strong>Tipo de motor</strong></legend>
+      <label><input type="radio" name="motor" value="Gasolina"> Gasolina</label>
+      <label><input type="radio" name="motor" value="Diésel"> Diésel</label>
+      <label><input type="radio" name="motor" value="Híbrido"> Híbrido</label>
+      <label><input type="radio" name="motor" value="Eléctrico"> Eléctrico</label>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>Transmisión</strong></legend>
+      <label><input type="radio" name="transmision" value="Manual"> Manual</label>
+      <label><input type="radio" name="transmision" value="Automática"> Automática</label>
+      <label><input type="radio" name="transmision" value="CVT"> CVT</label>
+      <label><input type="radio" name="transmision" value="Doble embrague"> Doble embrague</label>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>Tracción</strong></legend>
+      <label><input type="radio" name="traccion" value="Delantera (FWD)"> Delantera (FWD)</label>
+      <label><input type="radio" name="traccion" value="Trasera (RWD)"> Trasera (RWD)</label>
+      <label><input type="radio" name="traccion" value="Total o integral (AWD, 4x4)"> Total o integral (AWD, 4x4)</label>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>Tipo de carrocería</strong></legend>
+      <label><input type="radio" name="carroceria" value="Sedán"> Sedán</label>
+      <label><input type="radio" name="carroceria" value="Hatchback"> Hatchback</label>
+      <label><input type="radio" name="carroceria" value="SUV"> SUV</label>
+      <label><input type="radio" name="carroceria" value="Coupé"> Coupé</label>
+      <label><input type="radio" name="carroceria" value="Cabrio/Descapotable"> Cabrio/Descapotable</label>
+      <label><input type="radio" name="carroceria" value="Familiar"> Familiar</label>
+      <label><input type="radio" name="carroceria" value="Pick-up"> Pick-up</label>
+      <label><input type="radio" name="carroceria" value="Monovolumen"> Monovolumen</label>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>Número de puertas</strong></legend>
+      <label><input type="radio" name="puertas" value="2"> 2 puertas</label>
+      <label><input type="radio" name="puertas" value="3"> 3 puertas</label>
+      <label><input type="radio" name="puertas" value="4"> 4 puertas</label>
+      <label><input type="radio" name="puertas" value="5"> 5 puertas</label>
+    </fieldset>
+
+    <button type="button" onclick="generarFrase()">Generar recomendación</button>
+    <button type="reset">Reiniciar</button>
+  </form>
+
+  <div id="resultado" class="resultado"></div>
+</div>
+
+<script>
+  function generarFrase() {
+    const motor = document.querySelector('input[name="motor"]:checked')?.value;
+    const transmision = document.querySelector('input[name="transmision"]:checked')?.value;
+    const traccion = document.querySelector('input[name="traccion"]:checked')?.value;
+    const carroceria = document.querySelector('input[name="carroceria"]:checked')?.value;
+    const puertas = document.querySelector('input[name="puertas"]:checked')?.value;
+
+    if (motor && transmision && traccion && carroceria && puertas) {
+      const frase = `Quiero los 3 mejores coches que sean de motor ${motor}, con transmisión ${transmision}, que tengan tracción ${traccion}, tipo de carrocería ${carroceria} y con ${puertas} puertas.`;
+      document.getElementById('resultado').textContent = frase;
+    } else {
+      document.getElementById('resultado').textContent = "Por favor, complete todas las selecciones.";
+      document.getElementById('resultado').classList.add('error');
+    }
+  }
+</script>
+
+</body>
+</html>
