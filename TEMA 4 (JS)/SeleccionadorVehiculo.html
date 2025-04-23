@@ -16,10 +16,6 @@
       color: #2c3e50;
       font-size: 36px;
     }
-    h2 {
-      color: #2c3e50;
-      font-size: 28px;
-    }
     .form-container {
       background-color: white;
       border-radius: 8px;
@@ -66,7 +62,7 @@
       border: 1px solid #bdc3c7;
       border-radius: 5px;
       font-size: 18px;
-      color: #27ae60;
+      color: #2c3e50;
     }
     .error {
       color: #e74c3c;
@@ -130,6 +126,42 @@
 </div>
 
 <script>
+  const precios = {
+    motor: {
+      "Gasolina": 20000,
+      "Diésel": 22000,
+      "Híbrido": 28000,
+      "Eléctrico": 35000
+    },
+    transmision: {
+      "Manual": 0,
+      "Automática": 2000,
+      "CVT": 2500,
+      "Doble embrague": 3000
+    },
+    traccion: {
+      "Delantera (FWD)": 0,
+      "Trasera (RWD)": 1000,
+      "Total o integral (AWD, 4x4)": 3000
+    },
+    carroceria: {
+      "Sedán": 0,
+      "Hatchback": -1000,
+      "SUV": 4000,
+      "Coupé": 2000,
+      "Cabrio/Descapotable": 5000,
+      "Familiar": 1500,
+      "Pick-up": 3000,
+      "Monovolumen": 2000
+    },
+    puertas: {
+      "2": -1500,
+      "3": -1000,
+      "4": 0,
+      "5": 500
+    }
+  };
+
   function generarFrase() {
     const motor = document.querySelector('input[name="motor"]:checked')?.value;
     const transmision = document.querySelector('input[name="transmision"]:checked')?.value;
@@ -138,11 +170,23 @@
     const puertas = document.querySelector('input[name="puertas"]:checked')?.value;
 
     if (motor && transmision && traccion && carroceria && puertas) {
-      const frase = `Quiero los 3 mejores coches que sean de motor ${motor}, con transmisión ${transmision}, que tengan tracción ${traccion}, tipo de carrocería ${carroceria} y con ${puertas} puertas.`;
-      document.getElementById('resultado').textContent = frase;
+      const base = precios.motor[motor];
+      const total =
+        base +
+        precios.transmision[transmision] +
+        precios.traccion[traccion] +
+        precios.carroceria[carroceria] +
+        precios.puertas[puertas];
+
+      const frase = `Has seleccionado un coche con motor ${motor}, transmisión ${transmision}, tracción ${traccion}, carrocería tipo ${carroceria} y ${puertas} puertas.\n\nPrecio aproximado: ${total.toLocaleString('es-ES')} €`;
+
+      const resultado = document.getElementById('resultado');
+      resultado.classList.remove('error');
+      resultado.textContent = frase;
     } else {
-      document.getElementById('resultado').textContent = "Por favor, complete todas las selecciones.";
-      document.getElementById('resultado').classList.add('error');
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = "Por favor, complete todas las selecciones.";
+      resultado.classList.add('error');
     }
   }
 </script>
