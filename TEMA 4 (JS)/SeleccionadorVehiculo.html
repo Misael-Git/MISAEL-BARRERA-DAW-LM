@@ -187,7 +187,7 @@
       resultado.classList.remove('error');
       resultado.textContent = prompt;
 
-      respuestaIA.textContent = '⏳ Cargando...';
+      respuestaIA.textContent = '⏳ Consultando IA...';
       respuestaIA.classList.remove('error');
 
       try {
@@ -199,18 +199,12 @@
           body: JSON.stringify({ prompt })
         });
 
-        let resultText;
+        const data = await response.json();
+        const respuesta = data.carList || data.output || JSON.stringify(data);
 
-        try {
-          const data = await response.json();
-          resultText = data.carList || JSON.stringify(data);
-        } catch (err) {
-          resultText = await response.text();
-        }
-
-        respuestaIA.textContent = resultText || '⚠️ No se recibió respuesta válida de MagicLoops.';
+        respuestaIA.textContent = respuesta;
       } catch (error) {
-        console.error('Error al conectar con MagicLoops:', error);
+        console.error('❌ Error de conexión:', error);
         respuestaIA.textContent = '❌ Error al conectar con MagicLoops.';
         respuestaIA.classList.add('error');
       }
