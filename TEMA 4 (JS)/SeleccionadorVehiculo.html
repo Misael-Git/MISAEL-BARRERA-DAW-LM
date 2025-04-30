@@ -162,12 +162,14 @@
     }
   };
 
-  function generarFrase() {
+  async function generarFrase() {
     const motor = document.querySelector('input[name="motor"]:checked')?.value;
     const transmision = document.querySelector('input[name="transmision"]:checked')?.value;
     const traccion = document.querySelector('input[name="traccion"]:checked')?.value;
     const carroceria = document.querySelector('input[name="carroceria"]:checked')?.value;
     const puertas = document.querySelector('input[name="puertas"]:checked')?.value;
+    const resultado = document.getElementById('resultado');
+    resultado.classList.remove('error');
 
     if (motor && transmision && traccion && carroceria && puertas) {
       const base = precios.motor[motor];
@@ -178,13 +180,24 @@
         precios.carroceria[carroceria] +
         precios.puertas[puertas];
 
-      const frase = `Has seleccionado un coche con motor ${motor}, transmisión ${transmision}, tracción ${traccion}, carrocería tipo ${carroceria} y ${puertas} puertas.\n\nPrecio aproximado: ${total.toLocaleString('es-ES')} €`;
+      const prompt = `Quiero los 3 mejores coches con motor ${motor}, transmisión ${transmision}, tracción ${traccion}, carrocería tipo ${carroceria} y ${puertas} puertas.\n\nPrecio aproximado: ${total.toLocaleString('es-ES')} €`;
 
-      const resultado = document.getElementById('resultado');
-      resultado.classList.remove('error');
-      resultado.textContent = frase;
+      try {
+        const response = await fetch('https://magicloops.dev/api/loop/run/e3cb5132-660c-4c5f-9a41-3baa737e7065', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+        resultado.textContent = `${prompt}\n\nRecomendaciones:\n${data.carList || 'No se recibió respuesta de la IA.'}`;
+      } catch (error) {
+        resultado.textContent = 'Error al conectar con MagicLoops.';
+        console.error(error);
+      }
     } else {
-      const resultado = document.getElementById('resultado');
       resultado.textContent = "Por favor, complete todas las selecciones.";
       resultado.classList.add('error');
     }
