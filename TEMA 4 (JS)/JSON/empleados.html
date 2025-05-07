@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Empleados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            width: 280px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition-duration: 120ms;
+        }
+
+        .card h2 {
+            margin: 0 0 0.5rem;
+            color: #0077cc;
+        }
+
+        .card p {
+            margin: 0.3rem 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Lista de Empleados</h1>
+<div class="container" id="employeeContainer"></div>
+
+<script>
+    const data = {
+        "employees": {
+            "employee": [
+                {
+                    "employee": "Employee 1",
+                    "name": "Juan Pérez",
+                    "age": 35,
+                    "position": "Senior Developer",
+                    "department": "Technology",
+                    "salary": 75000,
+                    "location": "Madrid, Spain"
+                },
+                {
+                    "employee": "Employee 2",
+                    "name": "María Rodríguez",
+                    "age": 28,
+                    "position": "Graphic Designer",
+                    "department": "Design",
+                    "salary": 60000,
+                    "location": "Paris, France"
+                },
+                {
+                    "employee": "Employee 3",
+                    "name": "Carlos Gómez",
+                    "age": 40,
+                    "position": "Project Manager",
+                    "department": "Project Management",
+                    "salary": 90000,
+                    "location": "Berlin, Germany"
+                }
+            ]
+        }
+    };
+
+    const container = document.getElementById("employeeContainer");
+
+    data.employees.employee.forEach(emp => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+            <h2>${emp.name}</h2>
+            <p><b>Puesto:</b> ${emp.position}</p>
+            <p><b>Departamento:</b> ${emp.department}</p>
+            <p><b>Edad:</b> ${emp.age} años</p>
+            <p><b>Salario:</b> €${emp.salary.toLocaleString()}</p>
+            <p><b>Ubicación:</b> ${emp.location}</p>
+        `;
+
+        container.appendChild(card);
+    });
+</script>
+
+</body>
+</html>

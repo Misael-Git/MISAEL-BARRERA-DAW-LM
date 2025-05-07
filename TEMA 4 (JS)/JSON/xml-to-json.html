@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feed RSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #feed-title {
+      color: #333;
+    }
+
+    .item {
+      border-top: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .item h2 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    .item a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .item a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="feed-title"></h1>
+    <p id="feed-description"></p>
+    <div id="items"></div>
+  </div>
+
+  <!-- JSON embebido -->
+  <script>
+    const jsonData = {
+      "rss": {
+        "version": "2.0",
+        "channel": {
+          "title": "Ejemplo de Feed RSS",
+          "link": "https://www.ejemplo.com/rss",
+          "description": "Este es un ejemplo de un feed RSS.",
+          "item": [
+            {
+              "title": "Artículo 1",
+              "link": "https://www.ejemplo.com/articulo1",
+              "description": "Este es el primer artículo del feed."
+            },
+            {
+              "title": "Artículo 2",
+              "link": "https://www.ejemplo.com/articulo2",
+              "description": "Este es el segundo artículo del feed."
+            }
+          ]
+        }
+      }
+    };
+
+    const channel = jsonData.rss.channel;
+    document.getElementById('feed-title').textContent = channel.title;
+    document.getElementById('feed-description').textContent = channel.description;
+
+    const itemsContainer = document.getElementById('items');
+
+    channel.item.forEach(article => {
+      const div = document.createElement('div');
+      div.classList.add('item');
+
+      div.innerHTML = `
+        <h2>${article.title}</h2>
+        <p>${article.description}</p>
+        <a href="${article.link}" target="_blank">Leer más</a>
+      `;
+
+      itemsContainer.appendChild(div);
+    });
+  </script>
+</body>
+</html>
