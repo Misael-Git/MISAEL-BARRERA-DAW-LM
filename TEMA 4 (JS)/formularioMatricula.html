@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulario de Matrícula</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input[type="number"],
+    input[type="checkbox"] {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    fieldset {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #555;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .resultados {
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-left: 5px solid #007BFF;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .resultados p {
+      font-size: 16px;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .error {
+      background-color: #fdd;
+      color: #a00;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulario de Matrícula</h1>
+  <form id="formularioMatricula">
+    <label>Horas semanales:
+      <input type="number" id="horas" name="horas" min="1" required />
+    </label>
+
+    <fieldset>
+      <legend>Materias disponibles:</legend>
+      <label><input type="checkbox" id="mat1" name="materias" value="Matemáticas I" /> Matemáticas I</label>
+      <label><input type="checkbox" id="his" name="materias" value="Historia" /> Historia</label>
+      <label><input type="checkbox" id="mat2" name="materias" value="Matemáticas II" /> Matemáticas II</label>
+      <label><input type="checkbox" id="fis" name="materias" value="Física" /> Física</label>
+    </fieldset>
+
+    <label><input type="checkbox" id="antiguoAlumno" /> Soy antiguo alumno</label>
+    <label><input type="checkbox" id="beca" /> Tengo beca</label>
+
+    <button type="button" onclick="calcularPrecio()">Calcular precio</button>
+  </form>
+
+  <div class="resultados" id="resultado"></div>
+
+  <script>
+    function calcularPrecio() {
+      const horas = parseInt(document.getElementById('horas').value);
+      const mat1 = document.getElementById('mat1').checked;
+      const mat2 = document.getElementById('mat2').checked;
+      const antiguo = document.getElementById('antiguoAlumno').checked;
+      const beca = document.getElementById('beca').checked;
+      const resultado = document.getElementById('resultado');
+      resultado.innerHTML = "";
+
+      if (isNaN(horas) || horas <= 0) {
+        resultado.innerHTML = "<p class='error'>Introduce un número válido de horas.</p>";
+        return;
+      } else if (horas >= 100) { // Es imposible cursar tantas horas en una semana jaja
+        resultado.innerHTML = "<p class='error'>Es imposible cursar tantas horas en una semana jaja.</p>";
+        return;
+      }
+
+      if (mat2 && !mat1) {
+        resultado.innerHTML = "<p class='error'>No puedes matricularte en Matemáticas II sin haber elegido Matemáticas I.</p>";
+        return;
+      }
+
+      const precioPorHora = 20;
+      let total = horas * precioPorHora;
+
+      if (antiguo) {
+        total *= 0.65;
+      }
+
+      let precioConBeca = total;
+      let becaFormateado = "";
+
+      if (beca) {
+        precioConBeca *= 0.2;
+        becaFormateado = `<p><strong>Precio con beca:</strong> ${precioConBeca.toFixed(2)}€</p>`;
+      }
+
+      resultado.innerHTML = `
+        <p><strong>Precio total mensual:</strong> ${total.toFixed(2)}€</p>
+        ${becaFormateado}
+      `;
+    }
+  </script>
+</body>
+</html>
