@@ -5,12 +5,14 @@
     <author>Stevens</author>
     <publisher>Addison-Wesley</publisher>
     <year>2002</year>
+    <price>50.00</price>
   </book>
   <book id="2">
-    <title>Advanced Programming in the Unix Environment</title> 
-    <author>Stevens</author> 
+    <title>Advanced Programming in the Unix Environment</title>
+    <author>Stevens</author>
     <publisher>Addison-Wesley</publisher>
     <year>2004</year>
+    <price>60.00</price>
   </book>
   <book id="3">
     <title>Data on the Web</title>
@@ -18,31 +20,37 @@
     <author>Buneman</author>
     <author>Suciu</author>
     <year>2006</year>
+    <price>70.00</price>
   </book>
   <book id="4">
     <title>¡Disfrute de la vida para siempre!</title>
     <author>JW</author>
     <year>2021</year>
+    <price>0.00</price>
   </book>
   <book id="5">
     <title>Lo que los jóvenes preguntan. Respuestas prácticas (volumen 1)</title>
     <author>JW</author>
     <year>2011</year>
+    <price>0.00</price>
   </book>
   <book id="6">
     <title>Lo que los jóvenes preguntan. Respuestas prácticas (volumen 2)</title>
     <author>JW</author>
-    <year>2008</year> <!-- El volumen 2 está datado a fecha anterior que el 1, no es un error -->
+    <year>2008</year>
+    <price>0.00</price>
   </book>
   <book id="7">
     <!-- Aún no lo he terminado -->
     <title>La Biblia: Edición revisada de la Traducción del Nuevo Mundo en Español</title>
     <author>JW</author>
     <year>2019</year>
+    <price>0.00</price>
   </book>
   <book id="8">
     <title>Organizados para hacer la voluntad de Jehová</title>
     <author>JW</author>
     <year>2019</year>
+    <price>0.00</price>
   </book>
-</bib> 
+</bib>
