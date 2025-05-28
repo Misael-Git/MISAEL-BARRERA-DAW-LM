@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Examen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: border 0.2s;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      font-size: 1rem;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .resultados {
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: #f8fafc;
+      border-left: 6px solid #007bff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .card p {
+      margin: 0;
+      color: #333;
+    }
+
+    .card strong {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calcular Nota</h1>
+        <label for="nota">Escribe tu nota sobre 10:</label>
+        <input type="number" id="nota" min="0" max="10" step="0.01" placeholder="Ejemplo: 7.5">
+        <button onclick="calcular()">Calcular</button>
+
+        <div class="resultados" id="resultados"></div>
+    </div>
+
+  <script>
+    function calcular() {
+        const nota = parseFloat(document.getElementById("nota").value);
+        const totalPreguntas = 27;
+
+        if (isNaN(nota) || nota < 0 || nota > 10) {
+            document.getElementById("resultados").innerHTML = `
+                <div class="card"><p><strong>Introduce una nota válida entre 0 y 10</strong></p></div>
+            `;
+        return;
+    }
+
+    const aciertos = Math.round((nota * totalPreguntas) / 10);
+    const errores = totalPreguntas - aciertos;
+
+    const notaMenos01 = nota - (0.1 * errores);
+    const notaMenos02 = nota - (0.2 * errores);
+    const notaMenos03 = nota - (0.3 * errores);
+
+    document.getElementById("resultados").innerHTML = `
+        <div class="card"><p><strong>Aciertos estimados:</strong> ${aciertos.toFixed(0)} / 27</p>
+        <br><p><strong>Errores estimados:</strong> ${errores.toFixed(0)} / 27</p>
+        <br><p><strong>- 0.3 por fallo:</strong> ${notaMenos03.toFixed(2)} / 10</p>
+        <br><p><strong>- 0.2 por fallo:</strong> ${notaMenos02.toFixed(2)} / 10</p>
+        <br><p><strong>- 0.1 por fallo:</strong> ${notaMenos01.toFixed(2)} / 10</p>
+        <br><p><strong>Sin penalización:</strong> ${nota.toFixed(2)} / 10</p></div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
